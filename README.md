@@ -75,8 +75,8 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 <img src="Gallery.png" width=600>
 
 ### Networking
-*Home screen:
-*(Read/GET) Get a random cat image
+Home screen:
+(Read/GET) Get a random cat image
 
 # Existing API Endpoints
 Base url: https://api.thecatapi.com/v1
