@@ -62,7 +62,7 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
   
 
 ## Wireframes
-<img src="LocoFoco.png" width=600>
+<img src="WireFrame.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
@@ -71,9 +71,16 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+<img src="HomeScreenModel.png" width=600>
+<img src="Gallery.png" width=600>
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+*Home screen:
+*(Read/GET) Get a random cat image
+
+# Existing API Endpoints
+Base url: https://api.thecatapi.com/v1
+
+<img src="Networking.png" width=600>
+
 - TheCatApi: https://docs.thecatapi.com/
