@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_gallery.xml" value="0.27807971014492755" />
+        <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_main.xml" value="0.27807971014492755" />
+        <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/layout/item_image.xml" value="0.27807971014492755" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1503623188405797" />
       </map>
     </option>
