@@ -17,10 +17,13 @@ class GalleryActivity : AppCompatActivity() {
 
         rvGallery = findViewById(R.id.rvGallery)
 
-        val imageAdapter = ImageAdapter(this,CatImage.loadImages())
-        rvGallery.adapter = imageAdapter
-        rvGallery.layoutManager = GridLayoutManager(this, 2)
+//        val imageAdapter = ImageAdapter(this,CatImage.loadImages())
+//        rvGallery.adapter = imageAdapter
+//        rvGallery.layoutManager = GridLayoutManager(this, 2)
+
 
 
     }
+
+
 }
