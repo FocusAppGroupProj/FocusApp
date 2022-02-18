@@ -20,6 +20,8 @@ class CatImage(val url : String) : Parcelable {
             images.add(CatImage(url))
             images.add(CatImage(url))
             images.add(CatImage(url))
+            images.add(CatImage(url))
+            images.add(CatImage(url))
             return images
         }
     }
