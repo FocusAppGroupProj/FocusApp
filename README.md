@@ -13,8 +13,18 @@ Original App Design Project
 ### Description
 LocoFoco is a productivity app that helps users maintain an efficient balance of studying and rest periods. Our app implements the pomodoro timing technique along with a friendly cat, Loco, who encourages users to keep their focus by rewarding them with a cute cat image at the end of their focus session! 
 
+### Build Progress
 
-### App Evaluatio
+## Main Acitivity -> Gallery
+<img src='locofoco_milestone1.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+
+
+## Test Animation (Start and Stop)
+<img src='locofocoAnimation.gif' title='AnimationTest' width='300' alt='AnimationTest' />
+
+
+
+### App Evaluation
 - **Category:** Productivity 
 - **Mobile:** This is app can be used on Android mobile phones. 
 - **Story:** Times the user study and break periods. Will also run a cat animation to motivate the user. 
@@ -27,8 +37,8 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
-* Users can set/edit/start/reset/pause timer
-* Progressive element: pop up a cat image at the end of a focus session (using an cat pic API)
+* [ ] Users can set/edit/start/reset/pause timer
+* [ ] Progressive element: pop up a cat image at the end of a focus session (using an cat pic API)
 
 **Optional Nice-to-have Stories**
 
@@ -84,3 +94,6 @@ Base url: https://api.thecatapi.com/v1
 <img src="Networking.png" width=600>
 
 - TheCatApi: https://docs.thecatapi.com/
+
+
+
