@@ -38,7 +38,9 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 
 **Required Must-have Stories**
 * [ ] Users can set/edit/start/reset/pause timer
-* [ ] Progressive element: pop up a cat image at the end of a focus session (using an cat pic API)
+* [x] Gallery
+* [x] Progressive element: pop up a cat image at the end of a focus session (using an cat pic API)
+
 
 **Optional Nice-to-have Stories**
 
