@@ -7,8 +7,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class CatImage(val url : String) : Parcelable {
-    @IgnoredOnParcel
-    val imageUrl = url
 
     //just trying to show some images (can be removed later)
     companion object {

@@ -35,7 +35,7 @@ class ImageAdapter(val context: Context, val images : List<CatImage>) : Recycler
         }
         fun bind(image: CatImage){
             Glide.with(context)
-                .load(image.imageUrl)
+                .load(image.url)
                 .into(ivImage)
         }
     }
