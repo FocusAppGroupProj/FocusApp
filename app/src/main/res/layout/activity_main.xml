@@ -26,11 +26,10 @@
 		android:layout_height="240dp"
 		app:layout_constraintBottom_toTopOf="@+id/btnStartStop"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.768"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintVertical_bias="0.339"
-		tools:srcCompat="@drawable/loco0001" />
+		app:layout_constraintVertical_bias="0.357"
+		tools:srcCompat="@drawable/locotwo0001" />
 
 	<TextView
 		android:id="@+id/timer"
