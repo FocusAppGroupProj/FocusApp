@@ -2,28 +2,38 @@ package com.example.locofoco
 
 import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.locofoco.databinding.ActivityMainBinding
 import java.util.*
 import kotlin.math.roundToInt
+import android.content.Intent as Intent1
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var timeStarted = false
-    private lateinit var serviceIntent: Intent
-    private var time = 60.0
+    private lateinit var serviceIntent: Intent1
+    //private lateinit var intent: Intent1
+    private var time = 0
+    private var start_time = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        serviceIntent = getIntent()
+        time = intent.getIntExtra("TIME", 0)
+        start_time = intent.getIntExtra("TIME", 0)
+
+        binding.SetTime.setOnClickListener{
+            goToTimePicker()
+        }
         binding.start.setOnClickListener{
             startStopTimer()
         }
@@ -31,15 +41,22 @@ class MainActivity : AppCompatActivity() {
             resetTimer()
         }
 
-        serviceIntent = Intent(applicationContext, TimerService::class.java)
+        serviceIntent = Intent1(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
         }
 
+    private fun goToTimePicker() {
+        val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     private fun resetTimer() {
         stopTimer()
-        time = 0.0
-        binding.Timer.text = getTimeStringFromDouble(time)
+        time = start_time
+        binding.Timer.text = getTimeStringFromInt(time)
+        binding.Reset.visibility = View.GONE
     }
 
     private fun startStopTimer() {
@@ -48,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             startTimer()
+            binding.Reset.visibility = View.VISIBLE
         }
     }
 
@@ -67,19 +85,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val updateTime: BroadcastReceiver = object: BroadcastReceiver(){
-        override fun onReceive(context: Context, intent: Intent) {
-            time = intent.getDoubleExtra(TimerService.TIME_EXTRA, 0.0)
-            binding.Timer.text = getTimeStringFromDouble(time)
+        override fun onReceive(context: Context, intent: Intent1) {
+            time = intent.getIntExtra(TimerService.TIME_EXTRA, 0)
+            binding.Timer.text = getTimeStringFromInt(time)
             var str_time = time.toString()
-            if (time == 0.0){
+            if (time == 0){
                 resetTimer()
             }
         }
 
     }
 
-    private fun getTimeStringFromDouble(time: Double): String {
-        val resultInt = time.roundToInt()
+    private fun getTimeStringFromInt(time: Int): String {
+        val resultInt = time
         val minutes = resultInt % 86400 % 3600 / 60
         val seconds = resultInt % 86400 % 3600 % 60
 
