@@ -18,8 +18,8 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 ## Timer Main Screen: Start/Stop
 <img src='timer.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
 
-## Upload Cat Image in Gallery
-<img src='timer.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+## Test Animation of Logo 
+<img src='locofocoAnimation.gif' title='AnimationTest' width='300' alt='AnimationTest' />
 
 
 ## Test Animation of Loco (Start and Stop)
@@ -29,9 +29,9 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 ## Main Acitivity -> Gallery
 <img src='locofoco_milestone1.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
 
+## Upload Cat Image in Gallery
+<img src='Gallery.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
 
-## Test Animation of Logo 
-<img src='locofocoAnimation.gif' title='AnimationTest' width='300' alt='AnimationTest' />
 
 
 
