@@ -8,8 +8,6 @@ import org.json.JSONArray
 
 @Parcelize
 class CatImage(val url : String) : Parcelable {
-    @IgnoredOnParcel
-    val imageUrl = url
 
     //val imageId = id
 
