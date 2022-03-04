@@ -3,27 +3,45 @@ package com.example.locofoco
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.IntentFilter
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.locofoco.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import kotlin.math.roundToInt
 import android.content.Intent as Intent1
 
 class MainActivity : AppCompatActivity() {
 
+    //animation
+
+    private lateinit var catAnimate: AnimationDrawable
+
+
+    //timer
     private lateinit var binding: ActivityMainBinding
     private var timeStarted = false
     private lateinit var serviceIntent: Intent1
+
     //private lateinit var intent: Intent1
     private var time = 0
     private var start_time = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //animation
+
+        //locoImageView.setBackgroundResource(R.drawable.cat_animation_list)
+        //catAnimate = locoImageView.background as AnimationDrawable
+        //catAnimate.start()
+
+
+        //timer
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -31,21 +49,37 @@ class MainActivity : AppCompatActivity() {
         time = intent.getIntExtra("TIME", 0)
         start_time = intent.getIntExtra("TIME", 0)
 
-        binding.SetTime.setOnClickListener{
+        binding.SetTime.setOnClickListener {
             goToTimePicker()
         }
-        binding.start.setOnClickListener{
+        binding.start.setOnClickListener {
             startStopTimer()
         }
-        binding.Reset.setOnClickListener{
+        binding.Reset.setOnClickListener {
             resetTimer()
         }
 
         serviceIntent = Intent1(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
-        }
+    }
 
+
+    //animation
+/*
+    fun startStopAnimation(view: View) {
+
+        if (catAnimate.isRunning)
+            catAnimate.stop()
+        else
+            catAnimate.start()
+
+
+    }
+    */
+
+
+    //timer
     private fun goToTimePicker() {
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
         startActivity(intent)
@@ -62,11 +96,14 @@ class MainActivity : AppCompatActivity() {
     private fun startStopTimer() {
         if (timeStarted){
             stopTimer()
+
         }
         else{
             startTimer()
             binding.Reset.visibility = View.VISIBLE
+
         }
+
     }
 
     private fun startTimer() {
@@ -111,4 +148,6 @@ class MainActivity : AppCompatActivity() {
         const val TAG = "MainActivity"
     }
 }
+
+
 
