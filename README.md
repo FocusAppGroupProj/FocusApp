@@ -21,18 +21,10 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 ## Test Animation of Logo 
 <img src='locofocoAnimation.gif' title='AnimationTest' width='300' alt='AnimationTest' />
 
-
-## Test Animation of Loco (Start and Stop)
-<img src='customLoco.gif' title='customLoco' width='300' alt='customLoco' />
-
-
 ## Main Acitivity -> Gallery
 <img src='locofoco_milestone1.gif' title='Main Acitivity' width='300' alt='locofoco_milestone1' />
 
-## Upload Cat Image in Gallery
-<img src='Gallery.gif' title='Main Acitivity' width='300' alt='Gallery' />
-
-## Persisting Cat Images 
+## Upload and Persisting Cat Images 
 <img src='Local.gif' title='Main Acitivity' width='300' alt='Local' />
 
 
