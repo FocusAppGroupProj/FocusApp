@@ -1,6 +1,5 @@
 package com.example.locofoco
 
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,24 +18,24 @@ class PopUpWindow : AppCompatActivity() {
 
         // Get the data
         val imageView = findViewById<ImageView>(R.id.imageView_popup)
-        var img_url = intent.extras?.getString("img_url", "url") ?: ""
-        Log.i(TAG, "img_url: $img_url")
+        var imgUrl = intent.extras?.getString("img_url", "url") ?: ""
+        Log.i(TAG, "img_url: $imgUrl")
 
         // Set the data
         findViewById<TextView>(R.id.popup_window_title).text = "Here is a new friend I found!"
-        findViewById<Button>(R.id.popup_window_button).text = "Back"
+        findViewById<Button>(R.id.btn_home).text = "Back"
         Glide.with(this@PopUpWindow)
-            .load(img_url)
-            .dontAnimate()
+            .load(imgUrl)
             .into(imageView)
 
-        findViewById<Button>(R.id.popup_window_button).setOnClickListener {
+        findViewById<Button>(R.id.btn_home).setOnClickListener {
             finish()
         }
+
     }
 
     companion object{
-        private val TAG = "PopUpWindow"
+        private const val TAG = "PopUpWindow"
     }
 
 }

@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.PopupWindow
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
@@ -15,7 +12,6 @@ import org.apache.commons.io.FileUtils
 import org.json.JSONException
 import java.io.File
 import java.io.IOException
-import java.nio.charset.Charset
 
 private const val TAG = "MainActivity"
 private const val CAT_IMAGE_URL = "https://api.thecatapi.com/v1/images/search?api_key=228bee40-3aa2-4fce-8b99-3ce3725a26c8"
@@ -35,11 +31,13 @@ class MainActivity : AppCompatActivity() {
 
 
         findViewById<Button>(R.id.launch_img).setOnClickListener {
-            set_up()
+            getCatImageUrl()
         }
+
+        Log.i(TAG, "returning from POpUpWIndow to MainActivity")
     }
 
-    private fun get_cat_image_url(){
+    private fun getCatImageUrl(){
         client.get(CAT_IMAGE_URL, object: JsonHttpResponseHandler(){
             override fun onFailure(
                 statusCode: Int,
@@ -60,24 +58,21 @@ class MainActivity : AppCompatActivity() {
                     imageUrl_list.add(img_url)
                     catImgs.add(CatImage(img_url))
                     saveUrls()
-
+                    popUpCatImage(img_url) //popup the cat image
                 }catch(e: JSONException){
                     Log.e(TAG, "Encountered exception $e")
                 }
             }
         })
-
-
-
     }
 
-    private fun set_up(){
-        get_cat_image_url()
-        Log.i(TAG, "pressing button")
+    private fun popUpCatImage(img_url: String){
+        Log.i(TAG, "pressing button, img_url is $img_url")
         val intent = Intent(this@MainActivity, PopUpWindow::class.java)
         intent.putExtra("img_url", img_url)
         startActivity(intent)
     }
+
 
     private fun goToGalleryActivity(){
         val intent = Intent(this@MainActivity, GalleryActivity::class.java)
