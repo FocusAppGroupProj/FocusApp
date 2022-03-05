@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.PopupWindow
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     var imageUrl_list = mutableListOf<String>()
     var catImgs =   ArrayList<CatImage>()
     private val client = AsyncHttpClient()
+    private var img_url = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,7 +32,11 @@ class MainActivity : AppCompatActivity() {
             goToGalleryActivity()
         }
         loadImages()
-        get_cat_image_url()
+
+
+        findViewById<Button>(R.id.launch_img).setOnClickListener {
+            set_up()
+        }
     }
 
     private fun get_cat_image_url(){
@@ -48,22 +55,28 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "onSuccess: JSON data ${json.jsonArray.getJSONObject(0).getString("url")}")
                 //TODO: check dimensions of the image
                 try {
-                    val img_url = json.jsonArray.getJSONObject(0).getString("url")
+                    img_url = json.jsonArray.getJSONObject(0).getString("url")
                     //val cat_img = CatImage(img_url)
                     imageUrl_list.add(img_url)
                     catImgs.add(CatImage(img_url))
                     saveUrls()
 
-//                    //parcelize the object and send to GalleryActivity
-//                    val intent = Intent(this@MainActivity, GalleryActivity::class.java)
-//                    intent.putExtra("cat_img", cat_img)
-//                    startActivity(intent)
                 }catch(e: JSONException){
                     Log.e(TAG, "Encountered exception $e")
                 }
             }
         })
 
+
+
+    }
+
+    private fun set_up(){
+        get_cat_image_url()
+        Log.i(TAG, "pressing button")
+        val intent = Intent(this@MainActivity, PopUpWindow::class.java)
+        intent.putExtra("img_url", img_url)
+        startActivity(intent)
     }
 
     private fun goToGalleryActivity(){
