@@ -13,7 +13,7 @@ Original App Design Project
 ### Description
 LocoFoco is a productivity app that helps users maintain an efficient balance of studying and rest periods. Our app implements the pomodoro timing technique along with a friendly cat, Loco, who encourages users to keep their focus by rewarding them with a cute cat image at the end of their focus session! 
 
-### Build Progress (Updated as of 02/27/22)
+### Build Progress (Updated as of 03/04/22)
 
 ## Timer Main Screen: Start/Stop
 <img src='timer.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
@@ -23,14 +23,18 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 
 
 ## Test Animation of Loco (Start and Stop)
-<img src='customLoco.gif' title='AnimationTest' width='300' alt='AnimationTest' />
+<img src='customLoco.gif' title='customLoco' width='300' alt='customLoco' />
 
 
 ## Main Acitivity -> Gallery
-<img src='locofoco_milestone1.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+<img src='locofoco_milestone1.gif' title='Main Acitivity' width='300' alt='locofoco_milestone1' />
 
 ## Upload Cat Image in Gallery
-<img src='Gallery.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+<img src='Gallery.gif' title='Main Acitivity' width='300' alt='Gallery' />
+
+## Persisting Cat Images 
+<img src='Local.gif' title='Main Acitivity' width='300' alt='Local' />
+
 
 
 
@@ -49,7 +53,7 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 
 **Required Must-have Stories**
 * [x] Users can start/reset/pause timer
-* [ ] Set/edit timer
+* [x] Set/edit timer
 * [x] Have Cat Images Show Up In Gallery
 * [x] Progressive element: pop up a cat image at the end of a focus session (using a cat pic API)
 
