@@ -18,6 +18,9 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 ## Timer Main Screen: Start/Stop
 <img src='timer.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
 
+## Progressive Element: Animated Cat
+<img src='ani.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+
 ## Test Animation of Logo 
 <img src='locofocoAnimation.gif' title='AnimationTest' width='300' alt='AnimationTest' />
 
