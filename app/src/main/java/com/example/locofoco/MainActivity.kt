@@ -3,18 +3,21 @@ package com.example.locofoco
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.IntentFilter
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.locofoco.databinding.ActivityMainBinding
+import com.google.firebase.perf.util.Timer
 import java.util.*
 import kotlin.math.roundToInt
 import android.content.Intent as Intent1
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var locoCat: AnimationDrawable
     private lateinit var binding: ActivityMainBinding
     private var timeStarted = false
     private lateinit var serviceIntent: Intent1
@@ -24,8 +27,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         serviceIntent = getIntent()
         time = intent.getIntExtra("TIME", 0)
@@ -45,6 +54,14 @@ class MainActivity : AppCompatActivity() {
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
         }
+
+    override fun onStart() {
+        super.onStart()
+        binding.loco.setBackgroundResource(R.drawable.animate_list)
+        locoCat =  binding.loco.background as AnimationDrawable
+        locoCat.start()
+
+    }
 
     private fun goToTimePicker() {
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
