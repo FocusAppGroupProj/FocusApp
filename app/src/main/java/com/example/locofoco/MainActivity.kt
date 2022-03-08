@@ -87,6 +87,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startTimer() {
+        if (locoCat.isRunning) locoCat.stop()
+        else locoCat.start()
+
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
         startService(serviceIntent)
         binding.start.text = "pause"
@@ -95,6 +98,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun stopTimer() {
+        if (locoCat.isRunning)
+            locoCat.stop()
+
+
         stopService(serviceIntent)
         binding.start.text = "start"
         //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
