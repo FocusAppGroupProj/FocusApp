@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         loadImages()
         get_cat_image_url()
     }
-
+an
     private fun get_cat_image_url(){
         client.get(CAT_IMAGE_URL, object: JsonHttpResponseHandler(){
             override fun onFailure(
