@@ -3,16 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/cat_animation_list.xml" value="0.15833333333333333" />
-        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_baseline_more_time_24.xml" value="0.19583333333333333" />
-        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.19583333333333333" />
-        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.19583333333333333" />
-        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_baseline_replay_24.xml" value="0.19583333333333333" />
-        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19583333333333333" />
-        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_main.xml" value="0.10416666666666667" />
-        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_time_picker.xml" value="0.1796875" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.30053220865342756" />
-        <entry key="app/src/main/res/layout/activity_time_picker.xml" value="0.24791666666666667" />
+        <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_gallery.xml" value="0.23867753623188406" />
+        <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/layout/item_image.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/thuyd/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_gallery.xml" value="0.11354166666666667" />
+        <entry key="..\:/Users/thuyd/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/thuyd/AndroidStudioProjects/FocusApp/app/src/main/res/layout/item_image.xml" value="0.15625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1503623188405797" />
       </map>
     </option>
   </component>
