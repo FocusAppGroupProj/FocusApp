@@ -2,25 +2,22 @@ package com.example.locofoco
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
 
 
 
-
 class GalleryActivity : AppCompatActivity() {
-    //private val catImages = mutableListOf<CatImage>()
     lateinit var rvGallery : RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_gallery)
 
         rvGallery = findViewById(R.id.rvGallery)
 
-        // receive data send from intent
+        // receive list of CatImages send from intent
         val cat_imgs = intent.getParcelableArrayListExtra<CatImage>("cat_imgs")
-        //catImages.add(cat_img) // add the cat image to list of catImages
 
         //TODO: consider the case about repetition of pictures
         // either delete cat images and just have a SET of urls or ...
