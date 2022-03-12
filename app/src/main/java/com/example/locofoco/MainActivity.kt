@@ -25,25 +25,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var timeStarted = false
     private lateinit var serviceIntent: Intent1
-
     //private lateinit var intent: Intent1
     private var time = 0
     private var start_time = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-        //locoImageView.setBackgroundResource(R.drawable.cat_animation_list)
-        //catAnimate = locoImageView.background as AnimationDrawable
-        //catAnimate.start()
-
-
-        //timer
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
         serviceIntent = getIntent()
         time = intent.getIntExtra("TIME", 0)
@@ -52,17 +41,17 @@ class MainActivity : AppCompatActivity() {
         binding.SetTime.setOnClickListener {
             goToTimePicker()
         }
-        binding.start.setOnClickListener {
+        binding.start.setOnClickListener{
             startStopTimer()
         }
-        binding.Reset.setOnClickListener {
+        binding.Reset.setOnClickListener{
             resetTimer()
         }
 
         serviceIntent = Intent1(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
-    }
+        }
 
     override fun onStart() {
         super.onStart()
@@ -88,14 +77,11 @@ class MainActivity : AppCompatActivity() {
     private fun startStopTimer() {
         if (timeStarted){
             stopTimer()
-
         }
         else{
             startTimer()
             binding.Reset.visibility = View.VISIBLE
-
         }
-
     }
 
     private fun startTimer() {
@@ -147,6 +133,4 @@ class MainActivity : AppCompatActivity() {
         const val TAG = "MainActivity"
     }
 }
-
-
 
