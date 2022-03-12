@@ -10,7 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.locofoco.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.firebase.perf.util.Timer
 import java.util.*
 import kotlin.math.roundToInt
 import android.content.Intent as Intent1
@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     //animation
 
-    private lateinit var catAnimate: AnimationDrawable
-
+    private lateinit var locoCat: AnimationDrawable
 
     //timer
     private lateinit var binding: ActivityMainBinding
@@ -34,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //animation
 
         //locoImageView.setBackgroundResource(R.drawable.cat_animation_list)
         //catAnimate = locoImageView.background as AnimationDrawable
@@ -44,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         //timer
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         serviceIntent = getIntent()
         time = intent.getIntExtra("TIME", 0)
@@ -64,22 +64,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    //animation
-/*
-    fun startStopAnimation(view: View) {
-
-        if (catAnimate.isRunning)
-            catAnimate.stop()
-        else
-            catAnimate.start()
-
+    override fun onStart() {
+        super.onStart()
+        binding.loco.setBackgroundResource(R.drawable.animate_list)
+        locoCat =  binding.loco.background as AnimationDrawable
+        locoCat.start()
 
     }
-    */
 
-
-    //timer
     private fun goToTimePicker() {
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
         startActivity(intent)
@@ -107,6 +99,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startTimer() {
+        if (locoCat.isRunning) locoCat.stop()
+        else locoCat.start()
+
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
         startService(serviceIntent)
         binding.start.text = "pause"
@@ -115,6 +110,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun stopTimer() {
+        if (locoCat.isRunning)
+            locoCat.stop()
+
+
         stopService(serviceIntent)
         binding.start.text = "start"
         //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
