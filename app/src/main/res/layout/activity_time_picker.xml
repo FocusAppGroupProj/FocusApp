@@ -23,13 +23,11 @@
 
     <Button
         android:id="@+id/PickTime"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#8A2424"
-        android:backgroundTint="@color/teal_200"
         android:text="SET TIME"
-        app:cornerRadius="200dp"
+        app:cornerRadius="20dp"
         app:flow_horizontalAlign="center"
         app:flow_verticalAlign="center"
         app:layout_constraintBottom_toBottomOf="parent"
