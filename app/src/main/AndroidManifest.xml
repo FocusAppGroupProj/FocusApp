@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LocoFoco">
+
+
+
+        <!--Timer Select Screen-->
         <activity
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:name=".TimePicker"
             android:exported="true" >
             <intent-filter>
@@ -18,13 +23,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+        <!--Main Timer CountDown Screen-->
         <activity
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:name=".MainActivity"
             android:exported="true">
 
         </activity>
-
         <service android:name=".TimerService" />
     </application>
+
+
 
 </manifest>
