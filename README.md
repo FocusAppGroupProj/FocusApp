@@ -13,24 +13,28 @@ Original App Design Project
 ### Description
 LocoFoco is a productivity app that helps users maintain an efficient balance of studying and rest periods. Our app implements the pomodoro timing technique along with a friendly cat, Loco, who encourages users to keep their focus by rewarding them with a cute cat image at the end of their focus session! 
 
-### Build Progress (Updated as of 03/04/22)
+### Build Progress (Updated as of 03/16/22)
 
-## Timer Main Screen: Start/Stop
-<img src='timer.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+ ## UI WIP
 
-## Progressive Element: Animated Cat
-<img src='startStop.gif' title='Animation' width='300' alt='AnimationTest' />
-
-## Test Animation of Logo 
-<img src='locofocoAnimation.gif' title='AnimationTest' width='300' alt='AnimationTest' />
-
-## Main Acitivity -> Gallery
+ ## Timer
+ ### Start/Stop
+  <img src='timer.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+  
+ ## Gallery  
+ ### Main Acitivity -> Gallery
 <img src='locofoco_milestone1.gif' title='Main Acitivity' width='300' alt='locofoco_milestone1' />
-
-## Upload and Persisting Cat Images 
+### Recieving and Adding New Cat Images in Gallery
+<img src='PopUp.gif' title='Main Acitivity' width='300' alt='popUpWindow' />
+### Upload and Persisting Cat Images 
 <img src='Local.gif' title='Main Acitivity' width='300' alt='Local' />
-
-
+ 
+ ## Animation
+ 
+ ## Progressive Element: Animated Cat
+<img src='startStop.gif' title='Animation' width='300' alt='AnimationTest' />
+ ## Test Animation of Logo 
+<img src='locofocoAnimation.gif' title='AnimationTest' width='300' alt='AnimationTest' /
 
 
 
