@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
     //DONT DELETE ANIM!
     override fun onStart() {
         super.onStart()
-        binding.loco.setBackgroundResource(R.drawable.animate_list)
-        locoCat =  binding.loco.background as AnimationDrawable
+//        binding.loco.setBackgroundResource(R.drawable.animate_list)
+//        locoCat =  binding.loco.background as AnimationDrawable
 
     }
 
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun startTimer() {
         //DONt
-        locoCat.start()
+        //locoCat.start()
 
 
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
@@ -93,8 +93,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun stopTimer() {
-        if (locoCat.isRunning)
-            locoCat.stop()
+//        if (locoCat.isRunning)
+//            locoCat.stop()
 
         stopService(serviceIntent)
         binding.start.text = "start"
