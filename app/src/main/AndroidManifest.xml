@@ -14,7 +14,7 @@
 
         <!--Timer Select Screen-->
         <activity
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:theme="@style/Theme.wtrMelon"
             android:name=".TimePicker"
             android:exported="true" >
             <intent-filter>
@@ -28,7 +28,7 @@
 
         <!--Main Timer CountDown Screen-->
         <activity
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:theme="@style/Theme.wtrMelon"
             android:name=".MainActivity"
             android:exported="true">
 

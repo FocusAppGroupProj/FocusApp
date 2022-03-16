@@ -6,13 +6,9 @@ import android.content.IntentFilter
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.example.locofoco.databinding.ActivityMainBinding
-import com.google.firebase.perf.util.Timer
 import java.util.*
-import kotlin.math.roundToInt
 import android.content.Intent as Intent1
 
 class MainActivity : AppCompatActivity() {
@@ -91,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
         startService(serviceIntent)
         binding.start.text = "pause"
+        binding.start.background = getDrawable(R.drawable.simp_r_btn)
         //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = true
     }
@@ -99,9 +96,9 @@ class MainActivity : AppCompatActivity() {
         if (locoCat.isRunning)
             locoCat.stop()
 
-
         stopService(serviceIntent)
         binding.start.text = "start"
+        binding.start.background = getDrawable(R.drawable.gradient_btn)
         //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = false
     }
