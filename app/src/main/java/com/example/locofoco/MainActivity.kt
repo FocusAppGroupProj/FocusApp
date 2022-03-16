@@ -53,13 +53,12 @@ class MainActivity : AppCompatActivity() {
 
         }
     //DONT DELETE ANIM!
-    /*override fun onStart() {
+    override fun onStart() {
         super.onStart()
         binding.loco.setBackgroundResource(R.drawable.animate_list)
         locoCat =  binding.loco.background as AnimationDrawable
-        locoCat.start()
 
-    }*/
+    }
 
     private fun goToTimePicker() {
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
@@ -86,8 +85,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun startTimer() {
         //DONt
-        /*if (locoCat.isRunning) locoCat.stop()
-        else locoCat.start()*/
+        locoCat.start()
+
 
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
         startService(serviceIntent)
@@ -97,8 +96,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun stopTimer() {
-       /* if (locoCat.isRunning)
-            locoCat.stop()*/
+        if (locoCat.isRunning)
+            locoCat.stop()
 
 
         stopService(serviceIntent)
