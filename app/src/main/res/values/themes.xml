@@ -26,8 +26,18 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/teal_grad</item>
+<!--        textStyle-->
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">20sp</item>
+
+
 
     </style>
 
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent = "@android:style/TextAppearance">
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">40sp</item>
+
+    </style>
 
 </resources>

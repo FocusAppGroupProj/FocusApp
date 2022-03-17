@@ -15,12 +15,14 @@
 
 <!--        PopUpWindow-->
         <activity
+            android:theme="@style/Theme.wtrMelon"
             android:name=".PopUpWindow"
             android:exported="true">
         </activity>
 
 <!--        Gallery-->
         <activity
+            android:theme="@style/Theme.wtrMelon"
             android:name=".GalleryActivity"
             android:exported="true">
         </activity>

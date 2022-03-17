@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/gradient_bkg"
     tools:context=".PopUpWindow">
 
 
@@ -15,7 +15,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="2dp"
-        android:background="#673AB7"
+        android:background="@drawable/gradient_btn"
         android:gravity="center"
         android:text="Title"
         android:textAlignment="center"
@@ -45,6 +45,7 @@
         android:id="@+id/btn_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/simp_green_btn"
         android:text="Back to Home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
