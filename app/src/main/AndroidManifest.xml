@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.locofoco">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LocoFoco">
 
+<!--        PopUpWindow-->
+        <activity
+            android:name=".PopUpWindow"
+            android:exported="true">
+        </activity>
 
+<!--        Gallery-->
+        <activity
+            android:name=".GalleryActivity"
+            android:exported="true">
+        </activity>
 
         <!--Timer Select Screen-->
         <activity
@@ -35,7 +48,5 @@
         </activity>
         <service android:name=".TimerService" />
     </application>
-
-
 
 </manifest>
