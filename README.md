@@ -15,11 +15,16 @@ LocoFoco is a productivity app that helps users maintain an efficient balance of
 
 ### Build Progress (Updated as of 03/16/22)
 
- ## UI WIP
+
+ ## Basic DEMO
+ <p align="center">
+ <img src='demo.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+ </p>
+
 
  ## Timer
  ### Start/Stop
-  <img src='timer.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+  < img src='timer.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
   
  ## Gallery  
  ### Main Acitivity -> Gallery
