@@ -16,6 +16,7 @@
 <!--        Detail/delete Activity-->
         <activity
             android:name=".DetailActivity"
+            android:theme="@style/Theme.wtrMelon"
             android:exported="false" />
 
 <!--        PopUpWindow-->
@@ -25,6 +26,8 @@
             android:exported="true">
 
         </activity>
+
+<!--        Gallery-->
         <activity
             android:theme="@style/Theme.wtrMelon"
             android:name=".GalleryActivity"

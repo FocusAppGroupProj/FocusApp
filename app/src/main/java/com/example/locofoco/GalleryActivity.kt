@@ -94,5 +94,4 @@ class GalleryActivity : AppCompatActivity() {
     companion object{
         private const val TAG = "Gallery"
     }
-
 }
