@@ -17,7 +17,7 @@ private const val TAG = "MainActivity"
 private const val CAT_IMAGE_URL = "https://api.thecatapi.com/v1/images/search?api_key=228bee40-3aa2-4fce-8b99-3ce3725a26c8"
 class MainActivity : AppCompatActivity() {
     var imageUrl_list = mutableListOf<String>()
-    var catImgs =   ArrayList<CatImage>()
+    //var catImgs =   ArrayList<CatImage>()
     private val client = AsyncHttpClient()
     private var img_url = ""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,8 +55,8 @@ class MainActivity : AppCompatActivity() {
                 try {
                     img_url = json.jsonArray.getJSONObject(0).getString("url")
                     //val cat_img = CatImage(img_url)
+                    loadImages() //update url list in case there is any image that has been deleted
                     imageUrl_list.add(img_url)
-                    catImgs.add(CatImage(img_url))
                     saveUrls()
                     popUpCatImage(img_url) //popup the cat image
                 }catch(e: JSONException){
@@ -76,9 +76,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToGalleryActivity(){
         val intent = Intent(this@MainActivity, GalleryActivity::class.java)
-        intent.putParcelableArrayListExtra("cat_imgs",catImgs)
         startActivity(intent)
-
     }
 
     //save image url
@@ -88,9 +86,6 @@ class MainActivity : AppCompatActivity() {
     fun loadImages() {
         try {
             imageUrl_list = FileUtils.readLines(getDataFile()) as MutableList<String>
-            for (i in 0 until imageUrl_list.size){
-                catImgs.add(CatImage(imageUrl_list.get(i)))
-            }
         } catch (ioExceptioin: IOException){
             ioExceptioin.printStackTrace()
         }
