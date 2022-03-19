@@ -36,10 +36,13 @@ class MainActivity : AppCompatActivity() {
     private var time = 0
     private var start_time = 0
 
+    //gallery
     var imageUrl_list = mutableListOf<String>()
     var catImgs =   ArrayList<CatImage>()
     private val client = AsyncHttpClient()
     private var img_url = ""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -80,11 +83,12 @@ class MainActivity : AppCompatActivity() {
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
         }
+
     //DONT DELETE ANIM!
     override fun onStart() {
         super.onStart()
-//        binding.loco.setBackgroundResource(R.drawable.animate_list)
-//        locoCat =  binding.loco.background as AnimationDrawable
+           binding.loco.setBackgroundResource(R.drawable.animate_list)
+           locoCat =  binding.loco.background as AnimationDrawable
 
     }
 
@@ -113,7 +117,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun startTimer() {
         //DONt
-        //locoCat.start()
+        locoCat.start()
 
 
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
@@ -125,8 +129,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun stopTimer() {
-//        if (locoCat.isRunning)
-//            locoCat.stop()
+        if (locoCat.isRunning)
+            locoCat.stop()
 
         stopService(serviceIntent)
         binding.start.text = "start"
@@ -200,7 +204,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
     private fun goToGalleryActivity(){
         val intent = Intent1(this@MainActivity, GalleryActivity::class.java)
         intent.putParcelableArrayListExtra("cat_imgs",catImgs)
@@ -222,7 +225,6 @@ class MainActivity : AppCompatActivity() {
             ioExceptioin.printStackTrace()
         }
     }
-
     fun saveUrls(){
         try{
             FileUtils.writeLines(getDataFile(),imageUrl_list)
