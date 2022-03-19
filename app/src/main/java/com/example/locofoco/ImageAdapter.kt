@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+
 import com.bumptech.glide.request.RequestOptions
+
 class ImageAdapter(val context: Context, val images : List<String>, val ClickListener: OnClickListener) : RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
 
     interface OnClickListener{

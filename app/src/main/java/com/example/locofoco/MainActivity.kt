@@ -48,8 +48,6 @@ class MainActivity : AppCompatActivity() {
         val actionBar: ActionBar? = supportActionBar
         if (actionBar != null) {
             actionBar.setTitle("LOCOFOCO")
-
-
         }
 
 
@@ -183,6 +181,7 @@ class MainActivity : AppCompatActivity() {
                 try {
                     img_url = json.jsonArray.getJSONObject(0).getString("url")
                     //val cat_img = CatImage(img_url)
+                    loadImages() //update url list in case there is any image that has been deleted
                     imageUrl_list.add(img_url)
                     catImgs.add(CatImage(img_url))
                     saveUrls()
