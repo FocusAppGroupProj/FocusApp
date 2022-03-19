@@ -13,14 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LocoFoco">
 
+<!--        Detail/delete Activity-->
+        <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+
 <!--        PopUpWindow-->
         <activity
             android:theme="@style/Theme.wtrMelon"
             android:name=".PopUpWindow"
             android:exported="true">
-        </activity>
 
-<!--        Gallery-->
+        </activity>
         <activity
             android:theme="@style/Theme.wtrMelon"
             android:name=".GalleryActivity"

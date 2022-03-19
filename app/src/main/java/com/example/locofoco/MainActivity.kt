@@ -201,6 +201,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+
     private fun goToGalleryActivity(){
         val intent = Intent1(this@MainActivity, GalleryActivity::class.java)
         intent.putParcelableArrayListExtra("cat_imgs",catImgs)
@@ -222,6 +223,7 @@ class MainActivity : AppCompatActivity() {
             ioExceptioin.printStackTrace()
         }
     }
+
     fun saveUrls(){
         try{
             FileUtils.writeLines(getDataFile(),imageUrl_list)
@@ -229,7 +231,6 @@ class MainActivity : AppCompatActivity() {
             ioExceptioin.printStackTrace()
         }
     }
-
 
 
 }
