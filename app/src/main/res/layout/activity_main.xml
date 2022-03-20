@@ -44,7 +44,7 @@
 		android:layout_margin="10dp"
 		android:background="@drawable/simp_green_btn"
 		android:text="RESET"
-		android:textColor="@color/white"
+		android:textColor="#004D40"
 		app:flow_horizontalAlign="center"
 		app:icon="@drawable/ic_baseline_replay_24"
 		app:layout_constraintEnd_toEndOf="parent"

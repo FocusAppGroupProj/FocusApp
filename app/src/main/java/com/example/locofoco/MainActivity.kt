@@ -112,6 +112,7 @@ class MainActivity : AppCompatActivity() {
         else{
             startTimer()
             binding.Reset.visibility = View.VISIBLE
+
         }
     }
 
@@ -122,6 +123,8 @@ class MainActivity : AppCompatActivity() {
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
         startService(serviceIntent)
         binding.start.text = "pause"
+        binding.start.setTextColor(getResources().getColor(R.color.pink_400))
+        //binding.start.setTextColor(Color.rgb(200,0,0))
         binding.start.background = getDrawable(R.drawable.simp_r_btn)
         //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = true
@@ -138,6 +141,7 @@ class MainActivity : AppCompatActivity() {
 
         stopService(serviceIntent)
         binding.start.text = "start"
+        binding.start.setTextColor(getResources().getColor(R.color.white))
         binding.start.background = getDrawable(R.drawable.gradient_btn)
         //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = false
@@ -149,12 +153,15 @@ class MainActivity : AppCompatActivity() {
             binding.Timer.text = getTimeStringFromInt(time)
             var str_time = time.toString()
             if (time == 0){
+                Log.i(TAG, "time:$time")
                 resetTimer()
                 if (!updated){
                     getCatImageUrl()
                     updated = true
                 }
             }
+
+
         }
     }
 
@@ -220,7 +227,6 @@ class MainActivity : AppCompatActivity() {
     fun getDataFile() : File {
         return File(filesDir,"catUrls.txt")
     }
-
     fun loadImages() {
         try {
             imageUrl_list = FileUtils.readLines(getDataFile()) as MutableList<String>
