@@ -54,7 +54,7 @@ dependencies {
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //library for sending and parsing network requests
-    implementation 'com.codepath.libraries:asynchttpclient:2.1.1'
+    implementation 'com.codepath.libraries:asynchttpclient:2.2.0'
     //implementation 'com.codepath.libraries:asynchttpclient:2.1.1'
 
     //library for image rendering

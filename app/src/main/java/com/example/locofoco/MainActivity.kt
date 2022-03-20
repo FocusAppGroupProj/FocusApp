@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        loadImages()
         val actionBar: ActionBar? = supportActionBar
         if (actionBar != null) {
             actionBar.setTitle("LOCOFOCO")
@@ -73,11 +73,8 @@ class MainActivity : AppCompatActivity() {
         binding.galleryButton.setOnClickListener {
             goToGalleryActivity()
         }
-        loadImages()
 
-        binding.launchImg.setOnClickListener{
-            getCatImageUrl()
-        }
+
 
         serviceIntent = Intent1(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
@@ -119,7 +116,6 @@ class MainActivity : AppCompatActivity() {
         //DONt
         locoCat.start()
 
-
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
         startService(serviceIntent)
         binding.start.text = "pause"
@@ -146,9 +142,9 @@ class MainActivity : AppCompatActivity() {
             var str_time = time.toString()
             if (time == 0){
                 resetTimer()
+                getCatImageUrl() // popUpwindow when time runs out
             }
         }
-
     }
 
     private fun getTimeStringFromInt(time: Int): String {
@@ -208,7 +204,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent1(this@MainActivity, GalleryActivity::class.java)
         intent.putParcelableArrayListExtra("cat_imgs",catImgs)
         startActivity(intent)
-
     }
 
     //save image url
@@ -228,8 +223,8 @@ class MainActivity : AppCompatActivity() {
     fun saveUrls(){
         try{
             FileUtils.writeLines(getDataFile(),imageUrl_list)
-        } catch (ioExceptioin: IOException){
-            ioExceptioin.printStackTrace()
+        } catch (ioException: IOException){
+            ioException.printStackTrace()
         }
     }
 
