@@ -16,12 +16,12 @@
 <!--        Detail/delete Activity-->
         <activity
             android:name=".DetailActivity"
-            android:theme="@style/Theme.wtrMelon"
+            android:theme="@style/Theme.LocoFoco"
             android:exported="false" />
 
 <!--        PopUpWindow-->
         <activity
-            android:theme="@style/Theme.wtrMelon"
+            android:theme="@style/Theme.LocoFoco"
             android:name=".PopUpWindow"
             android:exported="true">
 
@@ -29,14 +29,14 @@
 
 <!--        Gallery-->
         <activity
-            android:theme="@style/Theme.wtrMelon"
+            android:theme="@style/Theme.LocoFoco"
             android:name=".GalleryActivity"
             android:exported="true">
         </activity>
 
         <!--Timer Select Screen-->
         <activity
-            android:theme="@style/Theme.wtrMelon"
+            android:theme="@style/Theme.LocoFoco"
             android:name=".TimePicker"
             android:exported="true" >
             <intent-filter>
@@ -50,7 +50,7 @@
 
         <!--Main Timer CountDown Screen-->
         <activity
-            android:theme="@style/Theme.wtrMelon"
+            android:theme="@style/Theme.LocoFoco"
             android:name=".MainActivity"
             android:exported="true">
 

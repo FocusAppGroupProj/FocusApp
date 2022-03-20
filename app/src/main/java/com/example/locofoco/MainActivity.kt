@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     //gallery
     var imageUrl_list = mutableListOf<String>()
-    var catImgs =   ArrayList<CatImage>()
+//    var catImgs =   ArrayList<CatImage>()
     private val client = AsyncHttpClient()
     private var img_url = ""
     private var updated = false
@@ -193,7 +193,7 @@ class MainActivity : AppCompatActivity() {
                     img_url = json.jsonArray.getJSONObject(0).getString("url")
                     loadImages() //update url list in case there is any image that has been deleted
                     imageUrl_list.add(img_url)
-                    catImgs.add(CatImage(img_url))
+//                    catImgs.add(CatImage(img_url))
                     saveUrls()
                     popUpCatImage(img_url) //popup the cat image
                 }catch(e: JSONException){
@@ -212,7 +212,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToGalleryActivity(){
         val intent = Intent1(this@MainActivity, GalleryActivity::class.java)
-        intent.putParcelableArrayListExtra("cat_imgs",catImgs)
+//        intent.putParcelableArrayListExtra("cat_imgs",catImgs)
         startActivity(intent)
     }
 
@@ -220,12 +220,13 @@ class MainActivity : AppCompatActivity() {
     fun getDataFile() : File {
         return File(filesDir,"catUrls.txt")
     }
+
     fun loadImages() {
         try {
             imageUrl_list = FileUtils.readLines(getDataFile()) as MutableList<String>
-            for (i in 0 until imageUrl_list.size){
-                catImgs.add(CatImage(imageUrl_list.get(i)))
-            }
+//            for (i in 0 until imageUrl_list.size){
+//                catImgs.add(CatImage(imageUrl_list.get(i)))
+//            }
         } catch (ioExceptioin: IOException){
             ioExceptioin.printStackTrace()
         }
