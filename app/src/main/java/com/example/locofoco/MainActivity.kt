@@ -35,12 +35,14 @@ class MainActivity : AppCompatActivity() {
     //private lateinit var intent: Intent1
     private var time = 0
     private var start_time = 0
+    private var count = 0
 
     //gallery
     var imageUrl_list = mutableListOf<String>()
     var catImgs =   ArrayList<CatImage>()
     private val client = AsyncHttpClient()
     private var img_url = ""
+    private var updated = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,6 +102,7 @@ class MainActivity : AppCompatActivity() {
         time = start_time
         binding.Timer.text = getTimeStringFromInt(time)
         binding.Reset.visibility = View.GONE
+
     }
 
     private fun startStopTimer() {
@@ -122,9 +125,14 @@ class MainActivity : AppCompatActivity() {
         binding.start.background = getDrawable(R.drawable.simp_r_btn)
         //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = true
+        if (updated){
+            updated = false
+        }
+
     }
 
     private fun stopTimer() {
+
         if (locoCat.isRunning)
             locoCat.stop()
 
@@ -142,7 +150,10 @@ class MainActivity : AppCompatActivity() {
             var str_time = time.toString()
             if (time == 0){
                 resetTimer()
-                getCatImageUrl() // popUpwindow when time runs out
+                if (!updated){
+                    getCatImageUrl()
+                    updated = true
+                }
             }
         }
     }
@@ -180,7 +191,6 @@ class MainActivity : AppCompatActivity() {
                 //TODO: check dimensions of the image
                 try {
                     img_url = json.jsonArray.getJSONObject(0).getString("url")
-                    //val cat_img = CatImage(img_url)
                     loadImages() //update url list in case there is any image that has been deleted
                     imageUrl_list.add(img_url)
                     catImgs.add(CatImage(img_url))
