@@ -12,16 +12,33 @@
 <!--    <item android:drawable="@drawable/locotwo0009" android:duration="100" />-->
 <!--    <item android:drawable="@drawable/locotwo0010" android:duration="100" />-->
 
-    <item android:drawable="@drawable/cat0001" android:duration="100" />
-    <item android:drawable="@drawable/cat0002" android:duration="100" />
-    <item android:drawable="@drawable/cat0003" android:duration="100" />
-    <item android:drawable="@drawable/cat0004" android:duration="100" />
-    <item android:drawable="@drawable/cat0005" android:duration="100" />
-    <item android:drawable="@drawable/cat0006" android:duration="100" />
-    <item android:drawable="@drawable/cat0007" android:duration="100" />
-    <item android:drawable="@drawable/cat0008" android:duration="100" />
-    <item android:drawable="@drawable/cat0009" android:duration="100" />
-    <item android:drawable="@drawable/cat0010" android:duration="100" />
+<!--    <item android:drawable="@drawable/cat0001" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/cat0002" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/cat0003" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/cat0004" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/cat0005" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/cat0006" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/cat0007" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/cat0008" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/cat0009" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/cat0010" android:duration="100" />-->
+
+    <item android:drawable="@drawable/curl0001" android:duration="200" />
+    <item android:drawable="@drawable/curl0002" android:duration="200" />
+    <item android:drawable="@drawable/curl0003" android:duration="200" />
+    <item android:drawable="@drawable/curl0004" android:duration="200" />
+    <item android:drawable="@drawable/curl0005" android:duration="200" />
+    <item android:drawable="@drawable/curl0006" android:duration="200" />
+    <item android:drawable="@drawable/curl0007" android:duration="200" />
+    <item android:drawable="@drawable/curl0008" android:duration="200" />
+    <item android:drawable="@drawable/curl0009" android:duration="200" />
+    <item android:drawable="@drawable/curl0010" android:duration="200" />
+
+
+
+
+
+
 
 
 </animation-list>

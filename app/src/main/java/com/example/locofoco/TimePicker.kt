@@ -29,8 +29,8 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
 
     private fun getTimeCalender(){
         val cal = Calendar.getInstance()
-        minute = cal.get(Calendar.HOUR)//.MINUTE)
-        second = cal.get(Calendar.MINUTE)//.SECOND)
+        minute = cal.get(Calendar.MINUTE)
+        second = cal.get(Calendar.SECOND)
     }
 
     private fun pickTime(){

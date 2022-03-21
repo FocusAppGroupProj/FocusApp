@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.example.locofoco.databinding.ActivityMainBinding
+import com.example.locofoco.databinding.ActivityPopupWindowBinding
 import okhttp3.Headers
 import org.apache.commons.io.FileUtils
 import org.json.JSONException
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     //animation
 
     private lateinit var locoCat: AnimationDrawable
+    private lateinit var locoPopCat: AnimationDrawable
+    private lateinit var popUpBinding: ActivityPopupWindowBinding
 
     //timer
     private lateinit var binding: ActivityMainBinding
@@ -203,6 +206,8 @@ class MainActivity : AppCompatActivity() {
 //                    catImgs.add(CatImage(img_url))
                     saveUrls()
                     popUpCatImage(img_url) //popup the cat image
+                    popUpBinding.locoPop.setBackgroundResource(R.drawable.animate_list)
+                    locoPopCat =  popUpBinding.locoPop.background as AnimationDrawable
                 }catch(e: JSONException){
                     Log.e(TAG, "Encountered exception $e")
                 }
