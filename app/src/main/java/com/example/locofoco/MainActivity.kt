@@ -129,7 +129,6 @@ class MainActivity : AppCompatActivity() {
         startService(serviceIntent)
         binding.start.text = "pause"
         binding.start.setTextColor(getResources().getColor(R.color.pink_400))
-        //binding.start.setTextColor(Color.rgb(200,0,0))
         binding.start.background = getDrawable(R.drawable.simp_r_btn)
         //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = true
