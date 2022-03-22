@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     private fun resetTimer() {
         stopTimer()
         time = start_time
-        binding.Timer.text = getTimeStringFromInt(time)
+        binding.Timer.text = getTimeStringFromInt(start_time)
         binding.Reset.visibility = View.GONE
     }
 
