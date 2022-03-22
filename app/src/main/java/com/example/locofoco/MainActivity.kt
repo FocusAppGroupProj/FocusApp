@@ -19,6 +19,11 @@ import org.json.JSONException
 import java.io.File
 import java.io.IOException
 import android.content.Intent as Intent1
+import android.os.CountDownTimer
+import android.widget.ImageButton
+import android.widget.ImageSwitcher
+import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 private const val TAG = "MainActivity"
@@ -39,6 +44,8 @@ class MainActivity : AppCompatActivity() {
     private var time = 0
     private var start_time = 0
     private var count = 0
+    private lateinit var countDownTimer: TextView
+    private lateinit var iconButton: ImageButton
 
     //gallery
     var imageUrl_list = mutableListOf<String>()
@@ -50,41 +57,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        loadImages()
-        val actionBar: ActionBar? = supportActionBar
-        if (actionBar != null) {
-            actionBar.setTitle("LOCOFOCO")
-        }
+        setContentView(R.layout.activity_main)
 
+        countDownTimer = findViewById(R.id.time)//timer
 
-        serviceIntent = getIntent()
-        time = intent.getIntExtra("TIME", 0)
-        start_time = intent.getIntExtra("TIME", 0)
+        iconButton = findViewById(R.id.start)//btnStartStop
 
-        //timer bindings
-        binding.SetTime.setOnClickListener {
-            goToTimePicker()
-        }
-        binding.start.setOnClickListener{
-            startStopTimer()
-        }
-        binding.Reset.setOnClickListener{
-            resetTimer()
-        }
+    }
 
-        //gallery bindings
-        binding.galleryButton.setOnClickListener {
-            goToGalleryActivity()
-        }
-
-
-
-        serviceIntent = Intent1(applicationContext, TimerService::class.java)
-        registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
-
-        }
 
     //DONT DELETE ANIM!
     override fun onStart() {
@@ -95,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         //locoPopCat =  popUpBinding.locoPop.background as AnimationDrawable
 
     }
-
     private fun goToTimePicker() {
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
         startActivity(intent)

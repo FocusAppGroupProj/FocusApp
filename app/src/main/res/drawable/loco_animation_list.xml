@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item android:drawable="@drawable/loco_1" android:duration="100" />
+    <item android:drawable="@drawable/loco_2" android:duration="100"/>
+    <item android:drawable="@drawable/loco_3" android:duration="100"/>
+    <item android:drawable="@drawable/loco_4" android:duration="100"/>
+    <item android:drawable="@drawable/loco_5" android:duration="100"/>
+    <item android:drawable="@drawable/loco_6" android:duration="100"/>
+    <item android:drawable="@drawable/loco_7" android:duration="100"/>
+    <item android:drawable="@drawable/loco_8" android:duration="100"/>
+    <item android:drawable="@drawable/loco_9" android:duration="100"/>
+    <item android:drawable="@drawable/loco_10" android:duration="100"/>
+    <item android:drawable="@drawable/loco_11" android:duration="200"/>
+    <item android:drawable="@drawable/loco_12" android:duration="200"/>
+    <item android:drawable="@drawable/loco_13" android:duration="200"/>
+    <item android:drawable="@drawable/loco_14" android:duration="200"/>
+    <item android:drawable="@drawable/loco_15" android:duration="200"/>
+    <item android:drawable="@drawable/loco_16" android:duration="200"/>
+    <item android:drawable="@drawable/loco_17" android:duration="200"/>
+    <item android:drawable="@drawable/loco_18" android:duration="200"/>
+    <item android:drawable="@drawable/loco_19" android:duration="200"/>
+    <item android:drawable="@drawable/loco_20" android:duration="200"/>
+    <item android:drawable="@drawable/loco_21" android:duration="200"/>
+    <item android:drawable="@drawable/loco_22" android:duration="200"/>
+    <item android:drawable="@drawable/loco_23" android:duration="200"/>
+    <item android:drawable="@drawable/loco_24" android:duration="200"/>
+    <item android:drawable="@drawable/loco_25" android:duration="200"/>
+    <item android:drawable="@drawable/loco_26" android:duration="200"/>
+    <item android:drawable="@drawable/loco_27" android:duration="200"/>
+    <item android:drawable="@drawable/loco_28" android:duration="200"/>
+    <item android:drawable="@drawable/loco_29" android:duration="200"/>
+    <item android:drawable="@drawable/loco_30" android:duration="200"/>
+    <item android:drawable="@drawable/loco_31" android:duration="200"/>
+    <item android:drawable="@drawable/loco_32" android:duration="200"/>
+    <item android:drawable="@drawable/loco_33" android:duration="200"/>
+    <item android:drawable="@drawable/loco_34" android:duration="200"/>
+    <item android:drawable="@drawable/loco_35" android:duration="200"/>
+    <item android:drawable="@drawable/loco_36" android:duration="200"/>
+    <item android:drawable="@drawable/loco_37" android:duration="200"/>
+    <item android:drawable="@drawable/loco_38" android:duration="200"/>
+    <item android:drawable="@drawable/loco_39" android:duration="200"/>
+    <item android:drawable="@drawable/loco_40" android:duration="200"/>
+    <item android:drawable="@drawable/loco_41" android:duration="200"/>
+    <item android:drawable="@drawable/loco_42" android:duration="200"/>
+    <item android:drawable="@drawable/loco_43" android:duration="200"/>
+    <item android:drawable="@drawable/loco_44" android:duration="200"/>
+    <item android:drawable="@drawable/loco_45" android:duration="200"/>
+    <item android:drawable="@drawable/loco_46" android:duration="200"/>
+    <item android:drawable="@drawable/loco_47" android:duration="200"/>
+    <item android:drawable="@drawable/loco_48" android:duration="200"/>
+    <item android:drawable="@drawable/loco_49" android:duration="200"/>
+    <item android:drawable="@drawable/loco_50" android:duration="200"/>
+    <item android:drawable="@drawable/loco_51" android:duration="200"/>
+    <item android:drawable="@drawable/loco_52" android:duration="200"/>
+    <item android:drawable="@drawable/loco_53" android:duration="200"/>
+    <item android:drawable="@drawable/loco_54" android:duration="200"/>
+    <item android:drawable="@drawable/loco_55" android:duration="200"/>
+    <item android:drawable="@drawable/loco_56" android:duration="200"/>
+    <item android:drawable="@drawable/loco_57" android:duration="200"/>
+    <item android:drawable="@drawable/loco_58" android:duration="200"/>
+    <item android:drawable="@drawable/loco_59" android:duration="200"/>
+    <item android:drawable="@drawable/loco_60" android:duration="200"/>
+    <item android:drawable="@drawable/loco_61" android:duration="200"/>
+    <item android:drawable="@drawable/loco_62" android:duration="200"/>
+    <item android:drawable="@drawable/loco_63" android:duration="200"/>
+    <item android:drawable="@drawable/loco_64" android:duration="200"/>
+    <item android:drawable="@drawable/loco_65" android:duration="200"/>
+    <item android:drawable="@drawable/loco_66" android:duration="200"/>
+    <item android:drawable="@drawable/loco_67" android:duration="200"/>
+
+
+
+</animation-list>
