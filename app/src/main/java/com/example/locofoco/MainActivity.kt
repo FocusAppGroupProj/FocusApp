@@ -6,7 +6,9 @@ import android.content.IntentFilter
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.example.locofoco.databinding.ActivityMainBinding
 import java.util.*
 import android.content.Intent as Intent1
