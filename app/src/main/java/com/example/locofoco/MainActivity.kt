@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity() {
     //animation
 
     private lateinit var locoCat: AnimationDrawable
-    private lateinit var locoPopCat: AnimationDrawable
-    private lateinit var popUpBinding: ActivityPopupWindowBinding
+    //private lateinit var locoPopCat: AnimationDrawable
+    //private lateinit var popUpBinding: ActivityPopupWindowBinding
 
     //timer
     private lateinit var binding: ActivityMainBinding
@@ -91,6 +91,8 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
            binding.loco.setBackgroundResource(R.drawable.animate_list)
            locoCat =  binding.loco.background as AnimationDrawable
+        //popUpBinding.locoPop.setBackgroundResource(R.drawable.animate_list)
+        //locoPopCat =  popUpBinding.locoPop.background as AnimationDrawable
 
     }
 
@@ -206,8 +208,7 @@ class MainActivity : AppCompatActivity() {
 //                    catImgs.add(CatImage(img_url))
                     saveUrls()
                     popUpCatImage(img_url) //popup the cat image
-                    popUpBinding.locoPop.setBackgroundResource(R.drawable.animate_list)
-                    locoPopCat =  popUpBinding.locoPop.background as AnimationDrawable
+
                 }catch(e: JSONException){
                     Log.e(TAG, "Encountered exception $e")
                 }
