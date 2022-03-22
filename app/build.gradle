@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
 //    id 'kotlin-android-extensions'
+    id 'kotlin-kapt' // If using Kotlin
 }
 
 android {
@@ -20,6 +21,8 @@ android {
 
     buildFeatures{
         viewBinding = true
+        dataBinding true
+
     }
 
     buildTypes {
