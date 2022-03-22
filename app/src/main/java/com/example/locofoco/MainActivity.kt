@@ -98,14 +98,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun getTimeStringFromInt(time: Int): String {
         val resultInt = time
+        val hours = resultInt % 86400 / 3600
         val minutes = resultInt % 86400 % 3600 / 60
         val seconds = resultInt % 86400 % 3600 % 60
 
-        return makeTimeString(minutes, seconds)
+        return makeTimeString(hours, minutes, seconds)
 
     }
 
-    private fun makeTimeString(minutes: Int, seconds: Int): String = String.format("%02d:%02d", minutes, seconds )
+    private fun makeTimeString(hours: Int, minutes: Int, seconds: Int): String = String.format("%02d:%02d:%02d", hours, minutes, seconds )
 
     companion object{
         const val TAG = "MainActivity"
