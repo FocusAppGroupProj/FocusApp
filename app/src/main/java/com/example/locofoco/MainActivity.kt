@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
         binding.start.text = "pause"
         binding.start.setTextColor(getResources().getColor(R.color.pink_400))
         binding.start.background = getDrawable(R.drawable.simp_r_btn)
-        //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
+//        binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = true
         if (updated) {
             updated = false
@@ -149,7 +149,7 @@ class MainActivity : AppCompatActivity() {
         binding.start.text = "start"
         binding.start.setTextColor(getResources().getColor(R.color.white))
         binding.start.background = getDrawable(R.drawable.gradient_btn)
-        //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
+//        binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = false
     }
 
@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity() {
         override fun onReceive(context: Context, intent: Intent1) {
             time = intent.getIntExtra(TimerService.TIME_EXTRA, 0)
             binding.Timer.text = getTimeStringFromInt(time)
-            var str_time = time.toString()
+           // var str_time = time.toString()
             if (time == 0) {
                 Log.i(TAG, "time:$time")
                 resetTimer()
@@ -206,12 +206,11 @@ class MainActivity : AppCompatActivity() {
                         TAG,
                         "onSuccess: JSON data ${json.jsonArray.getJSONObject(0).getString("url")}"
                     )
-                    //TODO: check dimensions of the image
                     try {
                         img_url = json.jsonArray.getJSONObject(0).getString("url")
                         loadImages() //update url list in case there is any image that has been deleted
                         imageUrl_list.add(img_url)
-//                    catImgs.add(CatImage(img_url))
+//                        catImgs.add(CatImage(img_url))
                         saveUrls()
                         popUpCatImage(img_url) //popup the cat image
 
@@ -231,7 +230,7 @@ class MainActivity : AppCompatActivity() {
 
         private fun goToGalleryActivity() {
             val intent = Intent1(this@MainActivity, GalleryActivity::class.java)
-//        intent.putParcelableArrayListExtra("cat_imgs",catImgs)
+//            intent.putParcelableArrayListExtra("cat_imgs",catImgs)
             startActivity(intent)
         }
 
