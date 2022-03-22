@@ -8,7 +8,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.TimePicker
+import android.widget.Toast
 import java.util.*
+import android.view.Gravity
+
+
+
 
 lateinit var PickTime: Button
 lateinit var SetTime: TextView
@@ -16,7 +21,8 @@ var time = 0
 class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
     var minute = 0
     var second = 0
-    var savedsecond = 0
+    var hour = 0
+    var savedhour = 0
     var savedminute = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,39 +31,40 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
         PickTime = findViewById(R.id.PickTime)
         SetTime = findViewById(R.id.SetTime)
         pickTime()
-    }
 
+    }
     private fun getTimeCalender(){
         val cal = Calendar.getInstance()
+        hour = cal.get(Calendar.HOUR)
         minute = cal.get(Calendar.MINUTE)
-        second = cal.get(Calendar.SECOND)
     }
 
     private fun pickTime(){
         PickTime.setOnClickListener{
             getTimeCalender()
-            TimePickerDialog(this, this, minute, second, true).show()
+            TimePickerDialog(this, this, hour, minute, true).show()
+
         }
     }
-
-    override fun onTimeSet(p0: TimePicker?, Minute: Int, Second: Int) {
-        savedsecond = Second
+    override fun onTimeSet(p0: TimePicker?, Hour: Int, Minute: Int) {
+        savedhour = Hour
         savedminute = Minute
-        var text = ""
-        if (savedminute < 10){
-            text += "0$savedminute:"
-        }else{
-            text += "$savedminute"
-        }
-        if (savedsecond < 10){
-            text += "0$savedsecond"
-        }else{
-            text += "$savedsecond"
-        }
-        SetTime.text = text
+        SetTime.text = "$savedhour:$savedminute"
 
-        time = (savedminute * 60) + savedsecond
-        goToMainActivity()
+        if (!(savedhour == 0 && savedminute == 0)) {
+            time = (savedhour * 3600) + (savedminute * 60)
+            goToMainActivity()
+        }
+        else{
+            //debugging
+            val t = Toast.makeText(applicationContext,
+                "Invalid Time! Please enter a time that's greater than 0",
+                Toast.LENGTH_LONG)
+            t.setGravity(Gravity.CENTER, 0, 0)
+            t.show()
+
+
+        }
 
     }
 

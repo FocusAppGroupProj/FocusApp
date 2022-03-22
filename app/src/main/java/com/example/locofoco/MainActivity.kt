@@ -7,6 +7,7 @@ import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.codepath.asynchttpclient.AsyncHttpClient
@@ -19,11 +20,11 @@ import org.json.JSONException
 import java.io.File
 import java.io.IOException
 import android.content.Intent as Intent1
-import android.os.CountDownTimer
-import android.widget.ImageButton
-import android.widget.ImageSwitcher
-import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.*
+//import android.os.CountDownTimer
+//import android.widget.ImageButton
+//import android.widget.ImageSwitcher
+//import android.widget.TextView
+//import kotlinx.android.synthetic.main.activity_main.*
 
 
 private const val TAG = "MainActivity"
@@ -44,8 +45,8 @@ class MainActivity : AppCompatActivity() {
     private var time = 0
     private var start_time = 0
     private var count = 0
-    private lateinit var countDownTimer: TextView
-    private lateinit var iconButton: ImageButton
+    //private lateinit var countDownTimer: TextView
+    //private lateinit var iconButton: ImageButton
 
     //gallery
     var imageUrl_list = mutableListOf<String>()
@@ -57,15 +58,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        countDownTimer = findViewById(R.id.time)//timer
+        serviceIntent = getIntent()
+        time = intent.getIntExtra("TIME", 0)
+        start_time = intent.getIntExtra("TIME", 0)
 
-        iconButton = findViewById(R.id.start)//btnStartStop
+        binding.SetTime.setOnClickListener {
+            goToTimePicker()
+        }
+        binding.start.setOnClickListener{
+            startStopTimer()
+        }
+        binding.Reset.setOnClickListener{
+            resetTimer()
+        }
 
-    }
+        serviceIntent = Intent1(applicationContext, TimerService::class.java)
+        registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
-
+        }
     //DONT DELETE ANIM!
     override fun onStart() {
         super.onStart()
@@ -75,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         //locoPopCat =  popUpBinding.locoPop.background as AnimationDrawable
 
     }
+
     private fun goToTimePicker() {
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
         startActivity(intent)
@@ -84,9 +98,8 @@ class MainActivity : AppCompatActivity() {
     private fun resetTimer() {
         stopTimer()
         time = start_time
-        binding.Timer.text = getTimeStringFromInt(time)
+        binding.Timer.text = getTimeStringFromInt(start_time)
         binding.Reset.visibility = View.GONE
-
     }
 
     private fun startStopTimer() {
@@ -96,7 +109,6 @@ class MainActivity : AppCompatActivity() {
         else{
             startTimer()
             binding.Reset.visibility = View.VISIBLE
-
         }
     }
 
@@ -144,20 +156,19 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-
-        }
     }
 
     private fun getTimeStringFromInt(time: Int): String {
         val resultInt = time
+        val hours = resultInt % 86400 / 3600
         val minutes = resultInt % 86400 % 3600 / 60
         val seconds = resultInt % 86400 % 3600 % 60
 
-        return makeTimeString(minutes, seconds)
+        return makeTimeString(hours, minutes, seconds)
 
     }
 
-    private fun makeTimeString(minutes: Int, seconds: Int): String = String.format("%02d:%02d", minutes, seconds )
+    private fun makeTimeString(hours: Int, minutes: Int, seconds: Int): String = String.format("%02d:%02d:%02d", hours, minutes, seconds )
 
     companion object{
         const val TAG = "MainActivity"
