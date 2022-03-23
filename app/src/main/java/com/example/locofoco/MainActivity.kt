@@ -6,8 +6,10 @@ import android.content.IntentFilter
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 //import android.widget.Toast
 //import androidx.appcompat.app.ActionBar
 import com.codepath.asynchttpclient.AsyncHttpClient
@@ -67,11 +69,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        //nav
-//        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-//
-//        // Sets the Toolbar to act as the ActionBar for this Activity window.
-//        // Make sure the toolbar exists in the activity and is not null
+////        //nav
+//        val toolbar = findViewById<View>(R.id.tb) as Toolbar
 //        setSupportActionBar(toolbar)
 
 
@@ -95,11 +94,20 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.gallery_button).setOnClickListener{
             goToGalleryActivity()
         }
-        loadImages()
+
 
 
         Log.i(TAG, "returning from POpUpWIndow to MainActivity")
     }
+
+
+
+    //menu top bar
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        return true
+    }
+
 
     //DONT DELETE ANIM!
     override fun onStart() {
