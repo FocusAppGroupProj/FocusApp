@@ -7,11 +7,8 @@ import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-//import android.widget.Toast
-//import androidx.appcompat.app.ActionBar
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.example.locofoco.databinding.ActivityMainBinding
@@ -24,7 +21,6 @@ import java.io.IOException
 import android.content.Intent as Intent1
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar;
 
 
 
@@ -32,9 +28,6 @@ import androidx.appcompat.widget.Toolbar;
 private const val TAG = "MainActivity"
 private const val CAT_IMAGE_URL = "https://api.thecatapi.com/v1/images/search?api_key=228bee40-3aa2-4fce-8b99-3ce3725a26c8"
 class MainActivity : AppCompatActivity() {
-
-    //nav bar
-
 
     //animation
 
@@ -69,9 +62,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-////        //nav
-//        val toolbar = findViewById<View>(R.id.tb) as Toolbar
-//        setSupportActionBar(toolbar)
 
 
         serviceIntent = getIntent()
@@ -91,21 +81,27 @@ class MainActivity : AppCompatActivity() {
         serviceIntent = Intent1(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
-        findViewById<Button>(R.id.gallery_button).setOnClickListener{
-            goToGalleryActivity()
-        }
+        //gallery btn replaced w/ gallery icon
+//        findViewById<Button>(R.id.gallery_button).setOnClickListener{
+//            goToGalleryActivity()
+//        }
 
 
 
         Log.i(TAG, "returning from POpUpWIndow to MainActivity")
     }
 
-
-
     //menu top bar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu,menu)
         return true
+    }
+    // activating this gallery btn || HOW to PUt HOVEr!!
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.gallery_icon){
+            goToGalleryActivity()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 
@@ -114,8 +110,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         binding.loco.setBackgroundResource(R.drawable.animate_list)
         locoCat = binding.loco.background as AnimationDrawable
-        //popUpBinding.locoPop.setBackgroundResource(R.drawable.animate_list)
-        //locoPopCat =  popUpBinding.locoPop.background as AnimationDrawable
+
 
     }
 
