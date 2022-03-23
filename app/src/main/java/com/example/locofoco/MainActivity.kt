@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.Button
 //import android.widget.Toast
 //import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.example.locofoco.databinding.ActivityMainBinding
@@ -21,16 +20,19 @@ import org.json.JSONException
 import java.io.File
 import java.io.IOException
 import android.content.Intent as Intent1
-//import android.os.CountDownTimer
-//import android.widget.ImageButton
-//import android.widget.ImageSwitcher
-//import android.widget.TextView
-//import kotlinx.android.synthetic.main.activity_main.*
+
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar;
+
+
 
 
 private const val TAG = "MainActivity"
 private const val CAT_IMAGE_URL = "https://api.thecatapi.com/v1/images/search?api_key=228bee40-3aa2-4fce-8b99-3ce3725a26c8"
 class MainActivity : AppCompatActivity() {
+
+    //nav bar
+
 
     //animation
 
@@ -59,10 +61,19 @@ class MainActivity : AppCompatActivity() {
     private var updated = false
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        //nav
+//        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+//
+//        // Sets the Toolbar to act as the ActionBar for this Activity window.
+//        // Make sure the toolbar exists in the activity and is not null
+//        setSupportActionBar(toolbar)
+
 
         serviceIntent = getIntent()
         time = intent.getIntExtra("TIME", 0)
