@@ -1,12 +1,18 @@
 package com.example.locofoco
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
 import org.apache.commons.io.FileUtils
@@ -17,6 +23,7 @@ import java.io.IOException
 class GalleryActivity : AppCompatActivity() {
     private lateinit var rvGallery : RecyclerView
     private lateinit var imageAdapter : ImageAdapter
+    private lateinit var alertDialog : AlertDialog
     var imageUrl_list = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +46,22 @@ class GalleryActivity : AppCompatActivity() {
             }
         }
 
+        //alertDialog = ClearImagesDialogFragment()
+
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Delete all images?")
+            .setPositiveButton("delete",
+                DialogInterface.OnClickListener { dialog, id ->
+                    clearImages()
+                })
+            .setNegativeButton("cancel",
+                DialogInterface.OnClickListener { dialog, id ->
+                    // User cancelled the dialog
+                })
+        // Create the AlertDialog object and return it
+        alertDialog = builder.create()
+
+
         imageAdapter = ImageAdapter(this,imageUrl_list,onClickListener)
         rvGallery.adapter = imageAdapter
         rvGallery.layoutManager = GridLayoutManager(this, 2)
@@ -50,6 +73,25 @@ class GalleryActivity : AppCompatActivity() {
         i.putExtra("img_url", imageUrl_list[position])
         i.putExtra("index", position)
         getResult.launch(i)
+    }
+
+    //delete all function
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_gallery,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.btnDeleteAll){
+            alertDialog.show()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun clearImages(){
+        imageUrl_list.clear()
+        imageAdapter.notifyDataSetChanged()
+        saveUrls()
     }
 
     private val getResult =

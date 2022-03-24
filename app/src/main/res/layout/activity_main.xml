@@ -11,14 +11,14 @@
         android:id="@+id/Timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:00"
+        android:text="00:00:00"
         android:textColor="@color/white"
         android:textSize="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 	<Button
 		android:id="@+id/start"
@@ -78,14 +78,15 @@
 
 
 	<ImageView
-	android:id="@+id/loco"
-	android:layout_width="300dp"
-	android:layout_height="300dp"
-	app:layout_constraintBottom_toTopOf="@id/Timer"
-	app:layout_constraintEnd_toEndOf="parent"
-	app:layout_constraintStart_toStartOf="parent"
-	app:layout_constraintTop_toTopOf="parent"
-	app:layout_constraintVertical_bias="0.5" />
+		android:id="@+id/loco"
+		android:layout_width="400dp"
+		android:layout_height="200dp"
+		app:layout_constraintBottom_toTopOf="@id/Timer"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.7"
+		tools:background="@drawable/lay0001"/>
 
 
 
