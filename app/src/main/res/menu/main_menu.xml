@@ -9,11 +9,6 @@
         android:tooltipText="Gallery"
         />
 
-    <item
-        android:title="Share"
-        android:id="@+id/Share_icon"
-        android:icon="@drawable/ic_send"
-        app:showAsAction="always"
-        />
+
 
 </menu>
