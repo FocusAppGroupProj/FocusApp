@@ -6,11 +6,9 @@ import android.content.IntentFilter
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-//import android.widget.Toast
-//import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.example.locofoco.databinding.ActivityMainBinding
@@ -21,11 +19,10 @@ import org.json.JSONException
 import java.io.File
 import java.io.IOException
 import android.content.Intent as Intent1
-//import android.os.CountDownTimer
-//import android.widget.ImageButton
-//import android.widget.ImageSwitcher
-//import android.widget.TextView
-//import kotlinx.android.synthetic.main.activity_main.*
+
+import androidx.appcompat.app.AppCompatActivity
+
+
 
 
 private const val TAG = "MainActivity"
@@ -35,8 +32,7 @@ class MainActivity : AppCompatActivity() {
     //animation
 
     private lateinit var locoCat: AnimationDrawable
-    //private lateinit var locoPopCat: AnimationDrawable
-    //private lateinit var popUpBinding: ActivityPopupWindowBinding
+
 
     //timer
     private lateinit var binding: ActivityMainBinding
@@ -59,10 +55,13 @@ class MainActivity : AppCompatActivity() {
     private var updated = false
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         serviceIntent = getIntent()
         time = intent.getIntExtra("TIME", 0)
@@ -81,22 +80,36 @@ class MainActivity : AppCompatActivity() {
         serviceIntent = Intent1(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
-        findViewById<Button>(R.id.gallery_button).setOnClickListener{
-            goToGalleryActivity()
-        }
-        loadImages()
+        //gallery btn replaced w/ gallery icon
+//        findViewById<Button>(R.id.gallery_button).setOnClickListener{
+//            goToGalleryActivity()
+//        }
+
 
 
         Log.i(TAG, "returning from POpUpWIndow to MainActivity")
     }
+
+    //menu top bar
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        return true
+    }
+    // activating this gallery btn || HOW to PUt HOVEr!!
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.gallery_icon){
+            goToGalleryActivity()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     //DONT DELETE ANIM!
     override fun onStart() {
         super.onStart()
         binding.loco.setBackgroundResource(R.drawable.animate_list)
         locoCat = binding.loco.background as AnimationDrawable
-        //popUpBinding.locoPop.setBackgroundResource(R.drawable.animate_list)
-        //locoPopCat =  popUpBinding.locoPop.background as AnimationDrawable
+
 
     }
 
@@ -132,7 +145,7 @@ class MainActivity : AppCompatActivity() {
         binding.start.text = "pause"
         binding.start.setTextColor(getResources().getColor(R.color.pink_400))
         binding.start.background = getDrawable(R.drawable.simp_r_btn)
-        //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
+//        binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = true
         if (updated) {
             updated = false
@@ -147,9 +160,9 @@ class MainActivity : AppCompatActivity() {
 
         stopService(serviceIntent)
         binding.start.text = "start"
-        binding.start.setTextColor(getResources().getColor(R.color.white))
+        binding.start.setTextColor(getResources().getColor(R.color.black))
         binding.start.background = getDrawable(R.drawable.gradient_btn)
-        //binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
+//        binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = false
     }
 
@@ -157,7 +170,7 @@ class MainActivity : AppCompatActivity() {
         override fun onReceive(context: Context, intent: Intent1) {
             time = intent.getIntExtra(TimerService.TIME_EXTRA, 0)
             binding.Timer.text = getTimeStringFromInt(time)
-            var str_time = time.toString()
+           // var str_time = time.toString()
             if (time == 0) {
                 Log.i(TAG, "time:$time")
                 resetTimer()
@@ -206,12 +219,11 @@ class MainActivity : AppCompatActivity() {
                         TAG,
                         "onSuccess: JSON data ${json.jsonArray.getJSONObject(0).getString("url")}"
                     )
-                    //TODO: check dimensions of the image
                     try {
                         img_url = json.jsonArray.getJSONObject(0).getString("url")
                         loadImages() //update url list in case there is any image that has been deleted
                         imageUrl_list.add(img_url)
-//                    catImgs.add(CatImage(img_url))
+//                        catImgs.add(CatImage(img_url))
                         saveUrls()
                         popUpCatImage(img_url) //popup the cat image
 
@@ -231,7 +243,7 @@ class MainActivity : AppCompatActivity() {
 
         private fun goToGalleryActivity() {
             val intent = Intent1(this@MainActivity, GalleryActivity::class.java)
-//        intent.putParcelableArrayListExtra("cat_imgs",catImgs)
+//            intent.putParcelableArrayListExtra("cat_imgs",catImgs)
             startActivity(intent)
         }
 
