@@ -37,7 +37,10 @@
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent = "@android:style/TextAppearance">
         <item name="android:fontFamily">Roboto Condensed Regular</item>
         <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/black</item>
+
 
     </style>
+
 
 </resources>

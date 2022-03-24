@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">LocoFoco</string>
+    <string name="app_name">LOCOFOCO</string>
+    <color name="app_color">@color/black</color>
 </resources>

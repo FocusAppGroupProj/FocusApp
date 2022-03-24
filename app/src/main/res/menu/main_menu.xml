@@ -4,7 +4,7 @@
     <item
         android:title="Gallery"
         android:id="@+id/gallery_icon"
-        android:icon="@drawable/ic_gallery"
+        android:icon="@drawable/ic_baseline_black_gallery"
         app:showAsAction="always"
         android:tooltipText="Gallery"
         />

@@ -32,8 +32,7 @@ class MainActivity : AppCompatActivity() {
     //animation
 
     private lateinit var locoCat: AnimationDrawable
-    //private lateinit var locoPopCat: AnimationDrawable
-    //private lateinit var popUpBinding: ActivityPopupWindowBinding
+
 
     //timer
     private lateinit var binding: ActivityMainBinding
@@ -161,7 +160,7 @@ class MainActivity : AppCompatActivity() {
 
         stopService(serviceIntent)
         binding.start.text = "start"
-        binding.start.setTextColor(getResources().getColor(R.color.white))
+        binding.start.setTextColor(getResources().getColor(R.color.black))
         binding.start.background = getDrawable(R.drawable.gradient_btn)
 //        binding.start.pointerIcon = getDrawable(R.drawable.ic_baseline_pause_24)
         timeStarted = false
