@@ -62,8 +62,6 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
                 Toast.LENGTH_LONG)
             t.setGravity(Gravity.CENTER, 0, 0)
             t.show()
-
-
         }
 
     }

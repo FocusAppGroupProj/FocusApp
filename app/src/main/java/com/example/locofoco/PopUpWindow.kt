@@ -1,5 +1,6 @@
 package com.example.locofoco
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -32,6 +33,17 @@ class PopUpWindow : AppCompatActivity() {
             finish()
         }
 
+        //share the data
+        findViewById<Button>(R.id.btn_share).setOnClickListener{
+            val text = "Look at this cute cat image i found from LocoFoco!\nLink: $imgUrl"
+            //intent to share the text
+            val shareTxtIntent = Intent()
+            shareTxtIntent.action = Intent.ACTION_SEND
+            shareTxtIntent.type = "text/plain"
+            shareTxtIntent.putExtra(Intent.EXTRA_TEXT, text)
+            shareTxtIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out LocoFoco")
+            startActivity(Intent.createChooser(shareTxtIntent, "Share via"))
+        }
     }
 
     companion object{
