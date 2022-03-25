@@ -8,9 +8,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-import com.bumptech.glide.request.RequestOptions
 
-class ImageAdapter(val context: Context, val images : List<String>, val ClickListener: OnClickListener) : RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
+class ImageAdapter(val context: Context, private val images : List<String>, val ClickListener: OnClickListener) : RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
 
     interface OnClickListener{
         fun onItemClicked(position: Int)
@@ -24,7 +23,6 @@ class ImageAdapter(val context: Context, val images : List<String>, val ClickLis
     override fun getItemCount(): Int {
         return images.size
     }
-
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val image_url = images.get(position)

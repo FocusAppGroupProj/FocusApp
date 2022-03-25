@@ -20,10 +20,7 @@ class DetailActivity : AppCompatActivity() {
         Glide.with(this@DetailActivity)
             .load(img_url)
             .into(ivCatImage)
-
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.detail_menu,menu)
@@ -33,7 +30,6 @@ class DetailActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val index = getIntent().getIntExtra("index",0)
         val img_url = getIntent().getStringExtra("img_url")
-
 
         if (item.itemId == R.id.del_icon){
             val data = Intent()

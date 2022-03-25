@@ -14,11 +14,12 @@ lateinit var PickTime: Button
 lateinit var SetTime: TextView
 var time = 0
 class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
+
     var minute = 0
-    var second = 0
     var hour = 0
     var savedhour = 0
     var savedminute = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_picker)
@@ -26,8 +27,8 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
         PickTime = findViewById(R.id.PickTime)
         SetTime = findViewById(R.id.SetTime)
         pickTime()
-
     }
+
     private fun getTimeCalender(){
         val cal = Calendar.getInstance()
         hour = cal.get(Calendar.HOUR)
@@ -41,16 +42,17 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
 
         }
     }
+
     override fun onTimeSet(p0: TimePicker?, Hour: Int, Minute: Int) {
         savedhour = Hour
         savedminute = Minute
         SetTime.text = makeTimeString(savedhour, savedminute, 0)
 
         if (!(savedhour == 0 && savedminute == 0)) {
-            time = (savedhour * 3600) + (savedminute )
+            // testing: change savedminute * 60 to savedminute || dont forget to change back!!!
+            time = (savedhour * 3600) + (savedminute * 60)
             goToMainActivity()
         }
-
     }
 
     private fun makeTimeString(hours: Int, minutes: Int, seconds: Int): String = String.format("%02d:%02d:%02d", hours, minutes, seconds )
@@ -61,6 +63,5 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
         startActivity(intent)
         finish()
     }
-
 
 }
