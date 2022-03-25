@@ -20,15 +20,15 @@
             android:exported="false" />
 
 
+
 <!--        PopUpWindow-->
         <activity
             android:theme="@style/Theme.wtrMelon"
             android:name=".PopUpWindow"
-            android:exported="true"
-
-            >
-
+            android:exported="true">
         </activity>
+
+
 
 <!--        Gallery-->
         <activity
@@ -36,6 +36,8 @@
             android:name=".GalleryActivity"
             android:exported="true">
         </activity>
+
+
 
         <!--Timer Select Screen-->
         <activity
@@ -55,11 +57,12 @@
             android:theme="@style/Theme.wtrMelon"
             android:name=".MainActivity"
             android:exported="true">
-
         </activity>
         <service android:name=".TimerService" />
-    </application>
 
+
+
+    </application>
 
 
 </manifest>

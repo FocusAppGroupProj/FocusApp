@@ -1,8 +1,6 @@
 package com.example.locofoco
 
-import android.app.Activity
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +10,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
 import org.apache.commons.io.FileUtils
@@ -36,8 +33,6 @@ class GalleryActivity : AppCompatActivity() {
         // receive list of CatImages send from intent
         loadImages()
 
-        //TODO: consider the case about repetition of pictures
-        // either delete cat images and just have a SET of urls or ...
 
         val onClickListener = object : ImageAdapter.OnClickListener{
             override fun onItemClicked(position: Int) {

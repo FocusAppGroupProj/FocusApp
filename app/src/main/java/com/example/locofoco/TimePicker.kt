@@ -52,6 +52,7 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
         SetTime.text = "$savedhour:$savedminute"
 
         if (!(savedhour == 0 && savedminute == 0)) {
+            //faster debugging min - > sec MAKE SURE TO CHANGE BACK !!!
             time = (savedhour * 3600) + (savedminute * 60)
             goToMainActivity()
         }
