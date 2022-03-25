@@ -35,7 +35,7 @@ class PopUpWindow : AppCompatActivity() {
 
         //share the data
         findViewById<Button>(R.id.btn_share).setOnClickListener{
-            val text = "Look at this cute cat image i found from LocoFoco!\nLink: $imgUrl"
+            val text = "Look at this cute cat image I found from LocoFoco!\nLink: $imgUrl"
             //intent to share the text
             val shareTxtIntent = Intent()
             shareTxtIntent.action = Intent.ACTION_SEND

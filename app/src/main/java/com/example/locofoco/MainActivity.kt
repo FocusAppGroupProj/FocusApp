@@ -19,9 +19,9 @@ import org.json.JSONException
 import java.io.File
 import java.io.IOException
 import android.content.Intent as Intent1
+import java.util.*
 
 import androidx.appcompat.app.AppCompatActivity
-
 
 
 
@@ -115,6 +115,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToTimePicker() {
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
+        resetTimer()
         startActivity(intent)
         finish()
     }
