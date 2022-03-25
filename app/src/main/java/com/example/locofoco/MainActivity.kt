@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.os.Handler;
+import android.os.Handler
 import android.view.View
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
@@ -23,10 +23,8 @@ import android.content.Intent as Intent1
 import java.util.*
 import java.util.Timer
 import kotlin.concurrent.schedule
-
 import androidx.appcompat.app.AppCompatActivity
-
-import android.media.MediaPlayer
+import android.media.MediaPlayer //ringtone
 
 
 
