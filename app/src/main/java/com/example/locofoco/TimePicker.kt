@@ -8,12 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.TimePicker
-import android.widget.Toast
 import java.util.*
-import android.view.Gravity
-
-
-
 
 lateinit var PickTime: Button
 lateinit var SetTime: TextView
@@ -49,23 +44,16 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
     override fun onTimeSet(p0: TimePicker?, Hour: Int, Minute: Int) {
         savedhour = Hour
         savedminute = Minute
-        SetTime.text = "$savedhour:$savedminute"
+        SetTime.text = makeTimeString(savedhour, savedminute, 0)
 
         if (!(savedhour == 0 && savedminute == 0)) {
-            //faster debugging min - > sec MAKE SURE TO CHANGE BACK !!!
             time = (savedhour * 3600) + (savedminute * 60)
             goToMainActivity()
         }
-        else{
-            //debugging
-            val t = Toast.makeText(applicationContext,
-                "Invalid Time! Please enter a time that's greater than 0",
-                Toast.LENGTH_LONG)
-            t.setGravity(Gravity.CENTER, 0, 0)
-            t.show()
-        }
 
     }
+
+    private fun makeTimeString(hours: Int, minutes: Int, seconds: Int): String = String.format("%02d:%02d:%02d", hours, minutes, seconds )
 
     private fun goToMainActivity(){
         val intent = Intent(this@TimePicker, MainActivity::class.java)
