@@ -11,35 +11,43 @@ Original App Design Project
 
 ## Overview
 ### Description
-LocoFoco is a productivity app that helps users maintain an efficient balance of studying and rest periods. Our app implements the pomodoro timing technique along with a friendly cat, Loco, who encourages users to keep their focus by rewarding them with a cute cat image at the end of their focus session! 
+So if you’re wondering about the name of our app, Loco Foco. Loco means crazy in Spanish and by combining it with “Foco” which is our shortened version for “Focus”, the app name roughly translates to “Crazy Focus”. We thought it would be a fun name to go with our productivity app. Also fun fact our cat mascot is named “Loco”. The main function of Loco Foco is for the user to set up timers for their study/work periods. What sets Loco Foco apart from other timer apps is that users are motivated to finish their task by being able to collect THE MOST ADORABLE, HEART MELTING cat pictures. With timer functionality and an encaptivating collection of cat images, LocoFoco is the perfect balance of productivity and heartwarming engagement. 
 
-### Build Progress (Updated as of 03/16/22)
+### Build Progress (Updated as of 03/25/22)
 
 
  ## Basic DEMO
  <p align="center">
- <img src='demo.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+ <img src='intro.gif' title='Main Acitivity' width='300' alt='intro' />
  </p>
 
 
- ## Timer
- ### Start/Stop
-  < img src='timer.gif' title='Main Acitivity' width='300' alt='AnimationTest' />
+ ## Timer + Animation
+ ### Setting Time
+  <img src='SetTimer.png' title='Main Acitivity' width='300' alt='intro' />
+  <img src='setting.gif' title='Main Acitivity' width='300' alt='intro' />
+ ### Pausing/Resetting 
+   <img src='PR.png' title='Main Acitivity' width='300' alt='intro' />
+ ### Animation | Loco in Sync With Your Work
+   <img src='sync.gif' title='Animation' width='300' alt='AnimationTest' />
+
+  
   
  ## Gallery  
  ### Main Acitivity -> Gallery
-<img src='locofoco_milestone1.gif' title='Main Acitivity' width='300' alt='locofoco_milestone1' />
+<img src='overall.gif' title='Main Acitivity' width='300' alt='overall' />
 ### Recieving and Adding New Cat Images in Gallery
-<img src='PopUp.gif' title='Main Acitivity' width='300' alt='popUpWindow' />
+<img src='Adding.gif' title='Main Acitivity' width='300' alt='popUpWindow' />
 ### Upload and Persisting Cat Images 
 <img src='Local.gif' title='Main Acitivity' width='300' alt='Local' />
  
- ## Animation
- 
- ## Progressive Element: Animated Cat
-<img src='startStop.gif' title='Animation' width='300' alt='AnimationTest' />
- ## Test Animation of Logo 
-<img src='locofocoAnimation.gif' title='AnimationTest' width='300' alt='AnimationTest' /
+
+## Sharing Cat Pictures
+### In Pop Up Window
+<img src='sharing_new_images.gif' title='Main Acitivity' width='300' alt='overall' />
+
+### In Gallery
+<img src='sharing_in_gallery.gif' title='Main Acitivity' width='300' alt='overall' />
 
 
 
