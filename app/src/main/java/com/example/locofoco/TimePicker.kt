@@ -47,7 +47,7 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
         SetTime.text = makeTimeString(savedhour, savedminute, 0)
 
         if (!(savedhour == 0 && savedminute == 0)) {
-            time = (savedhour * 3600) + (savedminute) //* 60)
+            time = (savedhour * 3600) + (savedminute )
             goToMainActivity()
         }
 

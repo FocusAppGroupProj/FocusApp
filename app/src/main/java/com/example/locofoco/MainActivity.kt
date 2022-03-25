@@ -20,6 +20,8 @@ import java.io.File
 import java.io.IOException
 import android.content.Intent as Intent1
 import java.util.*
+import java.util.Timer
+import kotlin.concurrent.schedule
 
 import androidx.appcompat.app.AppCompatActivity
 
@@ -28,7 +30,6 @@ import android.media.MediaPlayer
 
 
 
-private const val TAG = "MainActivity"
 private const val CAT_IMAGE_URL = "https://api.thecatapi.com/v1/images/search?api_key=228bee40-3aa2-4fce-8b99-3ce3725a26c8"
 class MainActivity : AppCompatActivity() {
 
@@ -88,8 +89,6 @@ class MainActivity : AppCompatActivity() {
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
 
-
-        Log.i(TAG, "returning from POpUpWIndow to MainActivity")
     }
 
     //menu top bar
@@ -119,7 +118,7 @@ class MainActivity : AppCompatActivity() {
         val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
         alarmRing.release()
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
-        resetTimer()
+        stopTimer() // or resetTimer()
         startActivity(intent)
         finish()
     }
@@ -156,7 +155,6 @@ class MainActivity : AppCompatActivity() {
         if (updated) {
             updated = false
         }
-
     }
 
     private fun stopTimer() {
@@ -178,18 +176,23 @@ class MainActivity : AppCompatActivity() {
         override fun onReceive(context: Context, intent: Intent1) {
             time = intent.getIntExtra(TimerService.TIME_EXTRA, 0)
             binding.Timer.text = getTimeStringFromInt(time)
+            Log.i(TAG, "time:$time")
            // var str_time = time.toString()
+//            if (time == 0 && !updated && timeStarted) {
+//                getCatImageUrl()
+//                updated = true
+//            }
             if (time == 0) {
-                val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
-                alarmRing.start()
-                Log.i(TAG, "time:$time")
+
+//                val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
+//                alarmRing.start()
                 resetTimer()
-                if (!updated) {
+                if (!updated){
+                    Log.i(TAG,"here")
                     getCatImageUrl()
                     updated = true
                 }
             }
-
         }
     }
 
@@ -207,9 +210,10 @@ class MainActivity : AppCompatActivity() {
         private fun makeTimeString(hours: Int, minutes: Int, seconds: Int): String =
             String.format("%02d:%02d:%02d", hours, minutes, seconds)
 
-//    companion object{
-//        const val TAG = "MainActivity"
-//    }
+
+    companion object{
+        const val TAG = "MainActivity"
+    }
 
         //GALLERY FUN
         private fun getCatImageUrl() {
@@ -280,6 +284,8 @@ class MainActivity : AppCompatActivity() {
                 ioException.printStackTrace()
             }
         }
+
+
 
 
     }
