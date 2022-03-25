@@ -23,6 +23,9 @@ import java.util.*
 
 import androidx.appcompat.app.AppCompatActivity
 
+import android.media.MediaPlayer
+
+
 
 
 private const val TAG = "MainActivity"
@@ -30,7 +33,6 @@ private const val CAT_IMAGE_URL = "https://api.thecatapi.com/v1/images/search?ap
 class MainActivity : AppCompatActivity() {
 
     //animation
-
     private lateinit var locoCat: AnimationDrawable
 
 
@@ -53,6 +55,11 @@ class MainActivity : AppCompatActivity() {
     private val client = AsyncHttpClient()
     private var img_url = ""
     private var updated = false
+
+//    play alarmRing but diff lengths of playing time bug?
+//    val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
+    //        alarmRing.start()
+
 
 
 
@@ -79,11 +86,6 @@ class MainActivity : AppCompatActivity() {
 
         serviceIntent = Intent1(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
-
-        //gallery btn replaced w/ gallery icon
-//        findViewById<Button>(R.id.gallery_button).setOnClickListener{
-//            goToGalleryActivity()
-//        }
 
 
 
@@ -114,6 +116,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToTimePicker() {
+        val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
+        alarmRing.release()
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
         resetTimer()
         startActivity(intent)
@@ -125,6 +129,7 @@ class MainActivity : AppCompatActivity() {
         time = start_time
         binding.Timer.text = getTimeStringFromInt(start_time)
         binding.Reset.visibility = View.GONE
+
     }
 
     private fun startStopTimer() {
@@ -167,12 +172,16 @@ class MainActivity : AppCompatActivity() {
         timeStarted = false
     }
 
+
+
     private val updateTime: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent1) {
             time = intent.getIntExtra(TimerService.TIME_EXTRA, 0)
             binding.Timer.text = getTimeStringFromInt(time)
            // var str_time = time.toString()
             if (time == 0) {
+                val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
+                alarmRing.start()
                 Log.i(TAG, "time:$time")
                 resetTimer()
                 if (!updated) {
