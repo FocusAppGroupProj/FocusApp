@@ -16,7 +16,6 @@ class PopUpWindow : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_popup_window)
 
-
         // Get the data
         val imageView = findViewById<ImageView>(R.id.imageView_popup)
         var imgUrl = intent.extras?.getString("img_url", "url") ?: ""

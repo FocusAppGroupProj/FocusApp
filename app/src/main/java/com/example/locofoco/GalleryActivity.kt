@@ -33,7 +33,6 @@ class GalleryActivity : AppCompatActivity() {
         // receive list of CatImages send from intent
         loadImages()
 
-
         val onClickListener = object : ImageAdapter.OnClickListener{
             override fun onItemClicked(position: Int) {
                 //remove item & notify the adapter
@@ -56,13 +55,12 @@ class GalleryActivity : AppCompatActivity() {
         // Create the AlertDialog object and return it
         alertDialog = builder.create()
 
-
         imageAdapter = ImageAdapter(this,imageUrl_list,onClickListener)
         rvGallery.adapter = imageAdapter
         rvGallery.layoutManager = GridLayoutManager(this, 2)
     }
 
-    fun launchDetailView(position: Int) {
+    private fun launchDetailView(position: Int) {
         // first parameter is the context, second is the class of the activity to launch
         val i = Intent(this,DetailActivity::class.java)
         i.putExtra("img_url", imageUrl_list[position])
@@ -83,7 +81,8 @@ class GalleryActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun clearImages(){
+    // delete all images in cache
+    private fun clearImages(){
         imageUrl_list.clear()
         imageAdapter.notifyDataSetChanged()
         saveUrls()
@@ -108,11 +107,13 @@ class GalleryActivity : AppCompatActivity() {
             }
         }
 
-    //save image url
-    fun getDataFile() : File {
+    //get image url file
+    private fun getDataFile() : File {
         return File(filesDir,"catUrls.txt")
     }
-    fun loadImages() {
+
+    // load image url from file
+    private fun loadImages() {
         try {
             imageUrl_list = FileUtils.readLines(getDataFile()) as MutableList<String>
         } catch (ioExceptioin: IOException){
@@ -120,7 +121,8 @@ class GalleryActivity : AppCompatActivity() {
         }
     }
 
-    fun saveUrls(){
+    // save image url to file
+    private fun saveUrls(){
         try{
             FileUtils.writeLines(getDataFile(),imageUrl_list)
         } catch (ioExceptioin: IOException){
