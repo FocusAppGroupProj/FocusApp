@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.os.Handler;
 import android.view.View
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
@@ -74,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         serviceIntent = getIntent()
         time = intent.getIntExtra("TIME", 0)
         start_time = intent.getIntExtra("TIME", 0)
+        binding.Timer.text = getTimeStringFromInt(start_time)
 
         binding.SetTime.setOnClickListener {
             goToTimePicker()
@@ -118,9 +120,9 @@ class MainActivity : AppCompatActivity() {
         val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
         alarmRing.release()
         val intent = android.content.Intent(this@MainActivity, TimePicker::class.java)
-        stopTimer() // or resetTimer()
+        stopTimer()
         startActivity(intent)
-        finish()
+//        finish()
     }
 
     private fun resetTimer() {
@@ -177,19 +179,18 @@ class MainActivity : AppCompatActivity() {
             time = intent.getIntExtra(TimerService.TIME_EXTRA, 0)
             binding.Timer.text = getTimeStringFromInt(time)
             Log.i(TAG, "time:$time")
-           // var str_time = time.toString()
-//            if (time == 0 && !updated && timeStarted) {
-//                getCatImageUrl()
-//                updated = true
-//            }
-            if (time == 0) {
 
-//                val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
-//                alarmRing.start()
+            if (time == 0) {
+                val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
+                alarmRing.start()
                 resetTimer()
-                if (!updated){
-                    Log.i(TAG,"here")
-                    getCatImageUrl()
+                if (!updated) {
+                    val handler = Handler()
+                    val runnableCode = Runnable { // Do something here on the main thread
+                        Log.i("Handlers", "Called on main thread")
+                        getCatImageUrl()
+                    }
+                    handler.postDelayed(runnableCode, 3000) // show popUpWindow after 3 sec
                     updated = true
                 }
             }
@@ -210,10 +211,6 @@ class MainActivity : AppCompatActivity() {
         private fun makeTimeString(hours: Int, minutes: Int, seconds: Int): String =
             String.format("%02d:%02d:%02d", hours, minutes, seconds)
 
-
-    companion object{
-        const val TAG = "MainActivity"
-    }
 
         //GALLERY FUN
         private fun getCatImageUrl() {
@@ -284,6 +281,21 @@ class MainActivity : AppCompatActivity() {
                 ioException.printStackTrace()
             }
         }
+
+
+    companion object{
+        const val TAG = "MainActivity"
+    }
+
+    override fun onNewIntent(intent: android.content.Intent?) {
+        super.onNewIntent(intent)
+        time = intent?.extras?.getInt("TIME")?: 0
+        start_time = time
+        binding.Timer.text = getTimeStringFromInt(start_time)
+
+    }
+
+
 
 
 
