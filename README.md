@@ -26,8 +26,6 @@ So if you’re wondering about the name of our app, Loco Foco. Loco means crazy 
  ### Setting Time
   <img src='SetTimer.png' title='Main Acitivity' width='300' alt='intro' />
   <img src='setting.gif' title='Main Acitivity' width='300' alt='intro' />
- ### Pausing/Resetting 
-   <img src='PR.png' title='Main Acitivity' width='300' alt='intro' />
  ### Animation | Loco in Sync With Your Work
    <img src='sync.gif' title='Animation' width='300' alt='AnimationTest' />
 
@@ -38,8 +36,10 @@ So if you’re wondering about the name of our app, Loco Foco. Loco means crazy 
 <img src='overall.gif' title='Main Acitivity' width='300' alt='overall' />
 ### Recieving and Adding New Cat Images in Gallery
 <img src='Adding.gif' title='Main Acitivity' width='300' alt='popUpWindow' />
-### Upload and Persisting Cat Images 
-<img src='Local.gif' title='Main Acitivity' width='300' alt='Local' />
+### Deleting An Image
+<img src='del_single.gif' title='Main Acitivity' width='300' alt='Local' />
+### Clearing Gallery
+<img src='del_all.gif' title='Main Acitivity' width='300' alt='Local' />
  
 
 ## Sharing Cat Pictures
