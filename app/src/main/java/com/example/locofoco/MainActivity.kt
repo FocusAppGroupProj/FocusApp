@@ -3,6 +3,8 @@ package com.example.locofoco
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.IntentFilter
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.graphics.drawable.AnimationDrawable
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
@@ -32,9 +34,8 @@ import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 
-private const val CAT_IMAGE_URL = "https://api.thecatapi.com/v1/images/search?api_key=228bee40-3aa2-4fce-8b99-3ce3725a26c8"
 class MainActivity : AppCompatActivity() {
-
+    private var CAT_IMAGE_URL = "API_KEY insert later"
     //animation
     private lateinit var locoCat: AnimationDrawable
 
@@ -56,7 +57,12 @@ class MainActivity : AppCompatActivity() {
 
     // ON_CREATE
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        val ai: ApplicationInfo = applicationContext.packageManager.getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
+
+        CAT_IMAGE_URL = ai.metaData["API_KEY"].toString()
+        Log.i(TAG, "cat image url is $CAT_IMAGE_URL")
         // binding of timer component to different functions
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
