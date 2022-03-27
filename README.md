@@ -24,20 +24,21 @@ So if you’re wondering about the name of our app, Loco Foco. Loco means crazy 
 
  ## Timer + Animation
  ### Setting Time
-  <img src='SetTimer.png' title='Main Acitivity' width='300' alt='intro' />
   <img src='setting.gif' title='Main Acitivity' width='300' alt='intro' />
- ### Animation | Loco in Sync With Your Work
+ 
+ ### Animation +  Loco in Sync With Your Work
    <img src='sync.gif' title='Animation' width='300' alt='AnimationTest' />
 
   
   
  ## Gallery  
- ### Main Acitivity -> Gallery
-<img src='overall.gif' title='Main Acitivity' width='300' alt='overall' />
+
 ### Recieving and Adding New Cat Images in Gallery
 <img src='Adding.gif' title='Main Acitivity' width='300' alt='popUpWindow' />
+
 ### Deleting An Image
 <img src='del_single.gif' title='Main Acitivity' width='300' alt='Local' />
+
 ### Clearing Gallery
 <img src='del_all.gif' title='Main Acitivity' width='300' alt='Local' />
  
@@ -125,6 +126,10 @@ Base url: https://api.thecatapi.com/v1
 
 - TheCatApi: https://docs.thecatapi.com/
 
+# Other Applications Used
+
+'Loco' 2D Cat Animation: Blender Software 
+App Logo: Canva
 
 
 
