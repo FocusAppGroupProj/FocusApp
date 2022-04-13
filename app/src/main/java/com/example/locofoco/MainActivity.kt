@@ -1,34 +1,32 @@
 package com.example.locofoco
 
+//import com.example.locofoco.databinding.ActivityPopupWindowBinding
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.IntentFilter
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.AnimationDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.os.Handler
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.example.locofoco.databinding.ActivityMainBinding
-//import com.example.locofoco.databinding.ActivityPopupWindowBinding
+import kotlinx.coroutines.*
 import okhttp3.Headers
 import org.apache.commons.io.FileUtils
 import org.json.JSONException
 import java.io.File
 import java.io.IOException
-import android.content.Intent as Intent1
+import java.lang.Runnable
 import java.util.*
-import java.util.Timer
-import kotlin.concurrent.schedule
-import androidx.appcompat.app.AppCompatActivity
-import android.media.MediaPlayer //ringtone
-
-
+import android.content.Intent as Intent1
 
 
 class MainActivity : AppCompatActivity() {
@@ -47,10 +45,14 @@ class MainActivity : AppCompatActivity() {
     var imageUrl_list = mutableListOf<String>()
     private val client = AsyncHttpClient()
     private var img_url = ""
-    private var updated = false
 
     // ON_CREATE
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        //Right when MainActivity is created, get a cat img url to be ready to pass onto PopUpWindow() immediately
+        GlobalScope.launch(){
+            getCatImageUrl()
+        }
 
         super.onCreate(savedInstanceState)
         val ai: ApplicationInfo = applicationContext.packageManager.getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
@@ -142,9 +144,7 @@ class MainActivity : AppCompatActivity() {
         binding.start.setTextColor(getResources().getColor(R.color.pink_400))
         binding.start.background = getDrawable(R.drawable.simp_r_btn)
         timeStarted = true
-        if (updated) {
-            updated = false
-        }
+
     }
 
 
@@ -172,15 +172,17 @@ class MainActivity : AppCompatActivity() {
                 alarmRing.start()
                 resetTimer()
                 // pop up cat image window
-                if (!updated) {
-                    val handler = Handler()
-                    val runnableCode = Runnable { // Do something here on the main thread
-                        Log.i("Handlers", "Called on main thread")
+                val handler = Handler()
+                val runnableCode = Runnable {
+                    Log.i("Handlers", "Called on main thread")
+                    popUpCatImage(img_url)
+                    // get a new img_url after the previous img_url is displayed on the PopUpWindow
+                    GlobalScope.launch{
+                        Log.i(TAG, "${Thread.currentThread()}")
                         getCatImageUrl()
                     }
-                    handler.postDelayed(runnableCode, 3000) // show popUpWindow after 3 sec
-                    updated = true
                 }
+                handler.postDelayed(runnableCode, 3000) // show popUpWindow after 3 sec
             }
         }
     }
@@ -201,35 +203,35 @@ class MainActivity : AppCompatActivity() {
 
 
     //POPUPWINDOW FUN
-    private fun getCatImageUrl() {
-        client.get(CAT_IMAGE_URL, object : JsonHttpResponseHandler() {
-            override fun onFailure(
-                statusCode: Int,
-                headers: Headers?,
-                response: String?,
-                throwable: Throwable?
-            ) {
-                Log.e(TAG, "onFailure $statusCode")
-            }
+    suspend fun getCatImageUrl() = coroutineScope {
+        //This function updates img_url with  an image url from the json response
+        withContext(Dispatchers.Default) {
+            Log.i(TAG, "Coroutine of getCatImgUrl() executed on ${Thread.currentThread()}")
+            client.get(CAT_IMAGE_URL, object : JsonHttpResponseHandler() {
+                override fun onFailure(
+                    statusCode: Int,
+                    headers: Headers?,
+                    response: String?,
+                    throwable: Throwable?
+                ) {
+                    Log.e(TAG, "onFailure $statusCode")
 
-            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
-                //This function returns an image url from the json response
-                Log.i(
-                    TAG,
-                    "onSuccess: JSON data ${json.jsonArray.getJSONObject(0).getString("url")}"
-                )
-                try {
-                    img_url = json.jsonArray.getJSONObject(0).getString("url")
-                    loadImages() //update url list in case there is any image that has been deleted
-                    imageUrl_list.add(img_url)
-                    saveUrls()
-                    popUpCatImage(img_url) //popup the cat image
-
-                } catch (e: JSONException) {
-                    Log.e(TAG, "Encountered exception $e")
                 }
-            }
-        })
+
+                override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
+                    //This function returns an image url from the json response
+                    Log.i(TAG,"onSuccess: JSON data ${json.jsonArray.getJSONObject(0).getString("url")}")
+                    try {
+                        img_url = json.jsonArray.getJSONObject(0).getString("url")
+                        loadImages() //update url list in case there is any image that has been deleted
+                        imageUrl_list.add(img_url)
+                        saveUrls()
+                    } catch (e: JSONException) {
+                        Log.e(TAG, "Encountered exception $e")
+                    }
+                }
+            })
+        }
     }
 
 
@@ -282,7 +284,6 @@ class MainActivity : AppCompatActivity() {
         start_time = time
         binding.Timer.text = getTimeStringFromInt(start_time)
     }
-
 
     companion object{
         const val TAG = "MainActivity"
