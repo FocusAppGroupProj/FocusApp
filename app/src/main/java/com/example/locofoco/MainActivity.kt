@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.IntentFilter
 import android.graphics.drawable.AnimationDrawable
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -25,8 +26,10 @@ import java.util.Timer
 import kotlin.concurrent.schedule
 import androidx.appcompat.app.AppCompatActivity
 import android.media.MediaPlayer //ringtone
-
-
+import com.google.gson.GsonBuilder
+import kotlinx.coroutines.launch
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
 
 
 private const val CAT_IMAGE_URL = "https://api.thecatapi.com/v1/images/search?api_key=228bee40-3aa2-4fce-8b99-3ce3725a26c8"
@@ -47,6 +50,9 @@ class MainActivity : AppCompatActivity() {
     private val client = AsyncHttpClient()
     private var img_url = ""
     private var updated = false
+
+    var image_list = mutableListOf<CatImage>()
+    val storageManager = StorageManager(this)
 
     // ON_CREATE
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +78,7 @@ class MainActivity : AppCompatActivity() {
 
         serviceIntent = Intent1(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
+
     }
 
 
@@ -162,8 +169,8 @@ class MainActivity : AppCompatActivity() {
             Log.i(TAG, "time:$time")
             if (time == 0) {
                 // alarm sound
-                val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
-                alarmRing.start()
+//                val alarmRing: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.ringtone_minimal)
+//                alarmRing.start()
                 resetTimer()
                 // pop up cat image window
                 if (!updated) {
@@ -214,9 +221,16 @@ class MainActivity : AppCompatActivity() {
                 )
                 try {
                     img_url = json.jsonArray.getJSONObject(0).getString("url")
-                    loadImages() //update url list in case there is any image that has been deleted
-                    imageUrl_list.add(img_url)
-                    saveUrls()
+
+//                    loadImages() //update url list in case there is any image that has been deleted
+//                    imageUrl_list.add(img_url)
+//                    saveUrls()
+//                    popUpCatImage(img_url) //popup the cat image
+
+                    var img = CatImage(img_url)
+                    image_list = storageManager.loadImages() //update url list in case there is any image that has been deleted
+                    image_list.add(img)
+                    storageManager.saveImages(image_list)
                     popUpCatImage(img_url) //popup the cat image
 
                 } catch (e: JSONException) {
@@ -249,24 +263,25 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    //LOAD IMAGE URLS FROM FILE
-    private fun loadImages() {
-        try {
-            imageUrl_list = FileUtils.readLines(getDataFile()) as MutableList<String>
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-        }
-    }
+//    //LOAD IMAGE URLS FROM FILE
+//    private fun loadImages() {
+//        try {
+//            imageUrl_list = FileUtils.readLines(getDataFile()) as MutableList<String>
+//        } catch (ioException: IOException) {
+//            ioException.printStackTrace()
+//        }
+//    }
+//
+//
+//    //SAVE IMAGE URLS TO FILE
+//    private fun saveUrls() {
+//        try {
+//            FileUtils.writeLines(getDataFile(), imageUrl_list)
+//        } catch (ioException: IOException) {
+//            ioException.printStackTrace()
+//        }
+//    }
 
-
-    //SAVE IMAGE URLS TO FILE
-    private fun saveUrls() {
-        try {
-            FileUtils.writeLines(getDataFile(), imageUrl_list)
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-        }
-    }
 
 
     // TIMER HELPER: update time of timer after user picks a new time from Timepicker

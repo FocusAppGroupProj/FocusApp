@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 
-class ImageAdapter(val context: Context, private val images : List<String>, val ClickListener: OnClickListener) : RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
+class ImageAdapter(val context: Context, private val images : List<CatImage>, val ClickListener: OnClickListener) : RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
 
     interface OnClickListener{
         fun onItemClicked(position: Int)
@@ -25,8 +25,8 @@ class ImageAdapter(val context: Context, private val images : List<String>, val 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val image_url = images.get(position)
-        holder.bind(image_url)
+        val image = images.get(position)
+        holder.bind(image)
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -38,10 +38,11 @@ class ImageAdapter(val context: Context, private val images : List<String>, val 
                 true
             }
         }
-        fun bind(image_url : String){
+        fun bind(image : CatImage){
             Glide.with(context)
-                .load(image_url)
+                .load(image.url)
                 .into(ivImage)
+
         }
     }
 

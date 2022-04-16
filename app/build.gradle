@@ -66,6 +66,7 @@ dependencies {
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
     implementation 'org.apache.commons:commons-io:+' // to make reading and writing files easier
 
+    implementation 'com.google.code.gson:gson:2.8.6'
 
 }
 repositories {
