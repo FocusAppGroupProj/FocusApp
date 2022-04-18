@@ -50,7 +50,7 @@ class TimePicker : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
 
         if (!(savedhour == 0 && savedminute == 0)) {
             // testing: change savedminute * 60 to savedminute || dont forget to change back!!!
-            time = (savedhour * 3600) + (savedminute * 60)
+            time = (savedhour * 3600) + (savedminute)
             goToMainActivity()
         }
 

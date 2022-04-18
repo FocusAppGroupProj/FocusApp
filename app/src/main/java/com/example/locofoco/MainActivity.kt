@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
 
     // ON_CREATE
     override fun onCreate(savedInstanceState: Bundle?) {
-
         //Right when MainActivity is created, get a cat img url to be ready to pass onto PopUpWindow() immediately
         GlobalScope.launch(){
             getCatImageUrl()
@@ -175,10 +174,12 @@ class MainActivity : AppCompatActivity() {
                 val handler = Handler()
                 val runnableCode = Runnable {
                     Log.i("Handlers", "Called on main thread")
-                    popUpCatImage(img_url)
+                    popUpCatImage()
+                    loadImages() //update url list in case there is any image that has been deleted
+                    imageUrl_list.add(img_url)
+                    saveUrls()
                     // get a new img_url after the previous img_url is displayed on the PopUpWindow
                     GlobalScope.launch{
-                        Log.i(TAG, "${Thread.currentThread()}")
                         getCatImageUrl()
                     }
                 }
@@ -205,7 +206,7 @@ class MainActivity : AppCompatActivity() {
     //POPUPWINDOW FUN
     suspend fun getCatImageUrl() = coroutineScope {
         //This function updates img_url with  an image url from the json response
-        withContext(Dispatchers.Default) {
+        withContext(Dispatchers.IO) {
             Log.i(TAG, "Coroutine of getCatImgUrl() executed on ${Thread.currentThread()}")
             client.get(CAT_IMAGE_URL, object : JsonHttpResponseHandler() {
                 override fun onFailure(
@@ -215,7 +216,6 @@ class MainActivity : AppCompatActivity() {
                     throwable: Throwable?
                 ) {
                     Log.e(TAG, "onFailure $statusCode")
-
                 }
 
                 override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
@@ -223,9 +223,6 @@ class MainActivity : AppCompatActivity() {
                     Log.i(TAG,"onSuccess: JSON data ${json.jsonArray.getJSONObject(0).getString("url")}")
                     try {
                         img_url = json.jsonArray.getJSONObject(0).getString("url")
-                        loadImages() //update url list in case there is any image that has been deleted
-                        imageUrl_list.add(img_url)
-                        saveUrls()
                     } catch (e: JSONException) {
                         Log.e(TAG, "Encountered exception $e")
                     }
@@ -236,7 +233,7 @@ class MainActivity : AppCompatActivity() {
 
 
     //GO TO POPUPWINDOW FUN
-    private fun popUpCatImage(img_url: String) {
+    private fun popUpCatImage() {
         Log.i(TAG, "pressing button, img_url is $img_url")
         val intent = Intent1(this@MainActivity, PopUpWindow::class.java)
         intent.putExtra("img_url", img_url)
