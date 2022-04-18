@@ -7,7 +7,6 @@ import android.content.IntentFilter
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.AnimationDrawable
-//import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -60,7 +59,6 @@ class MainActivity : AppCompatActivity() {
 
     // ON_CREATE
     override fun onCreate(savedInstanceState: Bundle?) {
-
         //Right when MainActivity is created, get a cat img url to be ready to pass onto PopUpWindow() immediately
         GlobalScope.launch(){
             getCatImageUrl()
@@ -189,10 +187,12 @@ class MainActivity : AppCompatActivity() {
                 val handler = Handler()
                 val runnableCode = Runnable {
                     Log.i("Handlers", "Called on main thread")
-                    popUpCatImage(img_url)
+                    popUpCatImage()
+                    loadImages() //update url list in case there is any image that has been deleted
+                    imageUrl_list.add(img_url)
+                    saveUrls()
                     // get a new img_url after the previous img_url is displayed on the PopUpWindow
                     GlobalScope.launch{
-                        Log.i(TAG, "${Thread.currentThread()}")
                         getCatImageUrl()
                     }
                 }
@@ -219,7 +219,7 @@ class MainActivity : AppCompatActivity() {
     //POPUPWINDOW FUN
     suspend fun getCatImageUrl() = coroutineScope {
         //This function updates img_url with  an image url from the json response
-        withContext(Dispatchers.Default) {
+        withContext(Dispatchers.IO) {
             Log.i(TAG, "Coroutine of getCatImgUrl() executed on ${Thread.currentThread()}")
             client.get(CAT_IMAGE_URL, object : JsonHttpResponseHandler() {
                 override fun onFailure(
@@ -234,10 +234,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
                     //This function returns an image url from the json response
-                    Log.i(
-                        TAG,
-                        "onSuccess: JSON data ${json.jsonArray.getJSONObject(0).getString("url")}"
-                    )
+                    Log.i(TAG,"onSuccess: JSON data ${json.jsonArray.getJSONObject(0).getString("url")}")
                     try {
                         img_url = json.jsonArray.getJSONObject(0).getString("url")
 
@@ -263,7 +260,7 @@ class MainActivity : AppCompatActivity() {
 
 
     //GO TO POPUPWINDOW FUN
-    private fun popUpCatImage(img_url: String) {
+    private fun popUpCatImage() {
         Log.i(TAG, "pressing button, img_url is $img_url")
         val intent = Intent1(this@MainActivity, PopUpWindow::class.java)
         intent.putExtra("img_url", img_url)
@@ -312,7 +309,6 @@ class MainActivity : AppCompatActivity() {
         start_time = time
         binding.Timer.text = getTimeStringFromInt(start_time)
     }
-
 
     companion object{
         const val TAG = "MainActivity"
