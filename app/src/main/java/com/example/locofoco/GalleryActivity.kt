@@ -148,8 +148,19 @@ class GalleryActivity : AppCompatActivity() {
                         storageManager.saveImages(imagesList)
                     } else {
                         val isFavorite = intent.getBooleanExtra("isFavorite",imagesList[position].isFavorite)
-                        if (isFavorite != imagesList[position].isFavorite){
-                            imagesList[position].isFavorite = isFavorite
+                        if (isFavorite != imagesShown[position].isFavorite){
+                            //find the image in imagelist if isFavorite is chaned
+                            for (i in imagesList){
+                                if (i.url == imagesShown[position].url){
+                                    if (isFiltered){//in fav page
+                                        //remove image if it is not longer a fav image
+                                        imagesShown.remove(i)
+                                        imageAdapter.notifyItemRemoved(position)
+                                    }
+                                    imagesList[position].isFavorite = isFavorite
+                                    break
+                                }
+                            }
                             storageManager.saveImages(imagesList)
                         }
                     }
