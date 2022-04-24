@@ -42,9 +42,11 @@ class MainActivity : AppCompatActivity() {
     private var start_time = 0
 
     //gallery
-    var imageUrl_list = mutableListOf<String>()
     private val client = AsyncHttpClient()
     private var img_url = ""
+
+    var image_list = mutableListOf<CatImage>()
+    val storageManager = StorageManager(this)
 
     // ON_CREATE
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -175,9 +177,12 @@ class MainActivity : AppCompatActivity() {
                 val runnableCode = Runnable {
                     Log.i("Handlers", "Called on main thread")
                     popUpCatImage()
-                    loadImages() //update url list in case there is any image that has been deleted
-                    imageUrl_list.add(img_url)
-                    saveUrls()
+
+                    var img = CatImage(img_url)
+                    image_list = storageManager.loadImages() //update url list in case there is any change
+                    image_list.add(img)
+                    storageManager.saveImages(image_list)
+
                     // get a new img_url after the previous img_url is displayed on the PopUpWindow
                     GlobalScope.launch{
                         getCatImageUrl()
@@ -245,32 +250,6 @@ class MainActivity : AppCompatActivity() {
     private fun goToGalleryActivity() {
         val intent = Intent1(this@MainActivity, GalleryActivity::class.java)
         startActivity(intent)
-    }
-
-
-    //GET IMAGE URLS FROM FILE
-     private fun getDataFile(): File {
-        return File(filesDir, "catUrls.txt")
-    }
-
-
-    //LOAD IMAGE URLS FROM FILE
-    private fun loadImages() {
-        try {
-            imageUrl_list = FileUtils.readLines(getDataFile()) as MutableList<String>
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-        }
-    }
-
-
-    //SAVE IMAGE URLS TO FILE
-    private fun saveUrls() {
-        try {
-            FileUtils.writeLines(getDataFile(), imageUrl_list)
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-        }
     }
 
 
