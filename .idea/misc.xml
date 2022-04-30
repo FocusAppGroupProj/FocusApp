@@ -3,16 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_detail.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_gallery.xml" value="0.23867753623188406" />
         <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/layout/item_image.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/menu/detail_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/h7922/AndroidStudioProjects/FocusApp/app/src/main/res/menu/menu_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14791666666666667" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/animate_list.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/custom_button.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/gradient_bkg.xml" value="0.22" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/gradient_btn.xml" value="0.11296296296296296" />
+        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_baseline_black_gallery.xml" value="0.128125" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_baseline_more_time_24.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.19583333333333333" />
@@ -25,6 +23,8 @@
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/ic_send.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/invertedgradbkg.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/drawable/simp_r_btn.xml" value="0.1" />
+        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/font/font.xml" value="0.1" />
+        <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/font/lobster.xml" value="0.1" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_detail.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_gallery.xml" value="0.14375" />
         <entry key="..\:/Users/steph/AndroidStudioProjects/FocusApp/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />

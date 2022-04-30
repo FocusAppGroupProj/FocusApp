@@ -16,7 +16,7 @@
         android:text="Pick Your Study Session Duration!"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="50dp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="87dp" />
@@ -40,11 +40,11 @@
 
     <TextView
         android:id="@+id/SetTime"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="00:00"
-        android:textColor="@color/black"
-        android:textSize="40dp"
+        android:textColor= '@color/black'
+    android:textSize="80dp"
         app:layout_constraintBottom_toTopOf="@+id/PickTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

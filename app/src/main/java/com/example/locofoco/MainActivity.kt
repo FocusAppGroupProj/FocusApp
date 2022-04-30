@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun startTimer() {
-        locoCat.start() //DON'T DELETE ANIM!
+        locoCat.start()
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
         startService(serviceIntent)
         binding.start.text = "pause"
@@ -196,6 +196,7 @@ class MainActivity : AppCompatActivity() {
                         getCatImageUrl()
                     }
                 }
+                //diff from github branch?
                 handler.postDelayed(runnableCode, 3000) // show popUpWindow after 3 sec
             }
         }
@@ -248,7 +249,7 @@ class MainActivity : AppCompatActivity() {
                             storageManager.loadImages() //update url list in case there is any image that has been deleted
                         image_list.add(img)
                         storageManager.saveImages(image_list)
-                        popUpCatImage(img_url) //popup the cat image
+                        popUpCatImage() //popup the cat image #img_url
 
                     } catch (e: JSONException) {
                         Log.e(TAG, "Encountered exception $e")
@@ -281,24 +282,24 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//    //LOAD IMAGE URLS FROM FILE
-//    private fun loadImages() {
-//        try {
-//            imageUrl_list = FileUtils.readLines(getDataFile()) as MutableList<String>
-//        } catch (ioException: IOException) {
-//            ioException.printStackTrace()
-//        }
-//    }
-//
-//
-//    //SAVE IMAGE URLS TO FILE
-//    private fun saveUrls() {
-//        try {
-//            FileUtils.writeLines(getDataFile(), imageUrl_list)
-//        } catch (ioException: IOException) {
-//            ioException.printStackTrace()
-//        }
-//    }
+    //LOAD IMAGE URLS FROM FILE
+    private fun loadImages() {
+        try {
+            imageUrl_list = FileUtils.readLines(getDataFile()) as MutableList<String>
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+        }
+    }
+
+
+    //SAVE IMAGE URLS TO FILE
+    private fun saveUrls() {
+        try {
+            FileUtils.writeLines(getDataFile(), imageUrl_list)
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+        }
+    }
 
 
 

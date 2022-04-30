@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">LOCOFOCO</string>
-    <color name="app_color">@color/black</color>
+    <color name="app_color">@color/text_shadow</color>
 </resources>
