@@ -10,16 +10,41 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
+    private var isFavorite : Boolean = false
+    private lateinit var img : CatImage
+    private var index : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
         var ivCatImage: ImageView = findViewById(R.id.ivCatImage)
-        val img_url = getIntent().getStringExtra("img_url")
+//        val img_url = getIntent().getStringExtra("img_url")
 
-        Glide.with(this@DetailActivity)
-            .load(img_url)
-            .into(ivCatImage)
+        img = getIntent().getParcelableExtra("img")!!
+        index = getIntent().getIntExtra("index",0)
+
+        if (img != null) {
+            Glide.with(this@DetailActivity)
+                .load(img.url)
+                .into(ivCatImage)
+            isFavorite = img.isFavorite
+        }
+//        Glide.with(this@DetailActivity)
+//            .load(img_url)
+//            .into(ivCatImage)
+    }
+
+    //send back isFavorite when going back to gallery activity
+    override fun onBackPressed() {
+        val data = Intent()
+        data.putExtra("index", index)
+        data.putExtra("isDeleted", false)
+        data.putExtra("isFavorite", isFavorite)
+        data.putExtra("code", 200)
+
+        setResult(RESULT_OK, data)
+        finish()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -28,8 +53,8 @@ class DetailActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val index = getIntent().getIntExtra("index",0)
-        val img_url = getIntent().getStringExtra("img_url")
+//        val index = getIntent().getIntExtra("index",0)
+//        val img_url = getIntent().getStringExtra("img_url")
 
         if (item.itemId == R.id.del_icon){
             val data = Intent()
@@ -43,8 +68,8 @@ class DetailActivity : AppCompatActivity() {
             finish() // closes the activity, pass data to parent
         }
 
-        if (item.itemId == R.id.share_icon){
-            val text = "Look at this cute cat image i found from LocoFoco!\nLink: $img_url"
+        else if (item.itemId == R.id.share_icon){
+            val text = "Look at this cute cat image i found from LocoFoco!\nLink: ${img.url}"
             //intent to share the text
             val shareTxtIntent = Intent()
             shareTxtIntent.action = Intent.ACTION_SEND
@@ -53,6 +78,29 @@ class DetailActivity : AppCompatActivity() {
             shareTxtIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out LocoFoco")
             startActivity(Intent.createChooser(shareTxtIntent, "Share via"))
         }
+        else if (item.itemId == R.id.star_icon){
+            isFavorite = !isFavorite
+            setIsFavorite(item)
+        }
+
+//        if (item.itemId == R.id.share_icon){
+//            val text = "Look at this cute cat image i found from LocoFoco!\nLink: $img_url"
+//            //intent to share the text
+//            val shareTxtIntent = Intent()
+//            shareTxtIntent.action = Intent.ACTION_SEND
+//            shareTxtIntent.type = "text/plain"
+//            shareTxtIntent.putExtra(Intent.EXTRA_TEXT, text)
+//            shareTxtIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out LocoFoco")
+//            startActivity(Intent.createChooser(shareTxtIntent, "Share via"))
+//        }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setIsFavorite(item : MenuItem){
+        if (isFavorite){
+            item.setIcon(android.R.drawable.btn_star_big_on)
+        } else {
+            item.setIcon(android.R.drawable.btn_star_big_off)
+        }
     }
 }
