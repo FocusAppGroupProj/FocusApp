@@ -105,19 +105,12 @@ So if you’re wondering about the name of our app, Loco Foco. Loco means crazy 
 ## Wireframes
 <img src="WireFrame.png" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
 
-### [BONUS] Interactive Prototype
 
-## Schema 
-[This section will be completed in Unit 9]
 ### Models
 <img src="HomeScreenModel.png" width=600>
 <img src="Gallery.png" width=600>
 
-### Networking
-Home screen:
-(Read/GET) Get a random cat image
 
 # Existing API Endpoints
 Base url: https://api.thecatapi.com/v1
